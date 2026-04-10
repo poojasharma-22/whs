@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1>Notifications</h1>
+  <p class="subtitle">Deviations and other alerts are notified here to admin.</p>
+</div>
+
+<div class="notifications-list">
+  @for (n of notifications; track n.id) {
+    <div class="notification-item" [class.read]="n.read">
+      <div class="n-header">
+        @if (n.type === 'deviation') {
+          <span class="badge badge-warning">Deviation</span>
+        }
+        <span class="time">{{ n.timestamp | date:'short' }}</span>
+        @if (!n.read) {
+          <button type="button" class="btn btn-sm btn-secondary" (click)="markRead(n)">Mark read</button>
+        }
+      </div>
+      <h4>{{ n.title }}</h4>
+      <p>{{ n.message }}</p>
+    </div>
+  }
+  @empty {
+    <p class="empty">No notifications.</p>
+  }
+</div>

@@ -1,0 +1,109 @@
+<div class="page-header">
+  <div>
+    <h1>Reports</h1>
+    <p class="subtitle">Product Journey Report — Track products from bin assignment to store receiving.</p>
+  </div>
+</div>
+
+<div class="filters card">
+  <h3>Filters</h3>
+  <div class="filter-row">
+    <div class="form-group">
+      <label>Date From</label>
+      <input type="date" class="form-control" [(ngModel)]="dateFrom" />
+    </div>
+    <div class="form-group">
+      <label>Date To</label>
+      <input type="date" class="form-control" [(ngModel)]="dateTo" />
+    </div>
+    <div class="form-group">
+      <label>Brand</label>
+      <select class="form-control" [(ngModel)]="brandFilter">
+        <option value="">All brands</option>
+        @for (b of brandOptions; track b) {
+          <option [value]="b">{{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Bin</label>
+      <select class="form-control" [(ngModel)]="binFilter">
+        <option [ngValue]="null">All bins</option>
+        @for (b of binOptions; track b) {
+          <option [ngValue]="b">Bin {{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Store</label>
+      <select class="form-control" [(ngModel)]="storeFilter">
+        <option [ngValue]="null">All stores</option>
+        @for (o of outlets; track o.id) {
+          <option [ngValue]="o.id">{{ o.name }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group search-group">
+      <label>Search (product name or IMEI)</label>
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Type to search..." />
+    </div>
+  </div>
+  <p class="disclaimer">* Dispatch dates are considered for filtering the data in the below table.</p>
+</div>
+
+<div class="report-toolbar">
+  <span class="summary-text">Showing {{ filteredRows.length }} of {{ reportRows.length }} products</span>
+  <div class="export-actions">
+    <button type="button" class="btn btn-sm btn-secondary" (click)="exportCSV()">Export CSV</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="exportExcel()">Export Excel</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="exportPDF()">Export PDF</button>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Product</th>
+        <th>Model</th>
+        <th>IMEI</th>
+        <th>Colour</th>
+        <th>RAM / Storage</th>
+        <th>Bin</th>
+        <th>Store</th>
+        <th>Dispatch Date</th>
+        <th>Received Date</th>
+        <th>eWay Bill</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (r of filteredRows; track r.product.id) {
+        <tr>
+          <td>{{ r.product.brand }}</td>
+          <td>{{ r.product.productName }}</td>
+          <td>{{ r.product.model }}</td>
+          <td><code>{{ r.product.imei }}</code></td>
+          <td>{{ r.product.colour }}</td>
+          <td>{{ r.product.ram }} / {{ r.product.storage }}</td>
+          <td>{{ r.product.binNumber ?? '–' }}</td>
+          <td>{{ r.storeName }}</td>
+          <td>{{ r.dispatchDate ?? '–' }}</td>
+          <td>{{ r.receivedDate ?? '–' }}</td>
+          <td>
+            @if (r.ewayBillNumber) {
+              <code>{{ r.ewayBillNumber }}</code>
+            } @else {
+              –
+            }
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="11" class="empty">No products match the filters.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

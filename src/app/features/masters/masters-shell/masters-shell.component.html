@@ -1,0 +1,16 @@
+<div class="masters-module">
+  <nav class="masters-nav">
+    <a
+      *ngFor="let item of masterNavItems"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      <span class="icon">{{ item.icon }}</span>
+      <span>{{ item.label }}</span>
+    </a>
+  </nav>
+  <div class="masters-outlet">
+    <router-outlet />
+  </div>
+</div>

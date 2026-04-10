@@ -1,0 +1,10 @@
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  max-width: 640px;
+}
+.form-card h3 { margin: 0 0 16px; font-size: 1.1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }

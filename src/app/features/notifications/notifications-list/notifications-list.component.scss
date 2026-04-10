@@ -1,0 +1,14 @@
+.subtitle { color: var(--text-muted); font-size: 14px; margin: 4px 0 0; }
+.notifications-list { display: flex; flex-direction: column; gap: 12px; }
+.notification-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.notification-item:not(.read) { border-left: 3px solid var(--warning); }
+.notification-item h4 { margin: 0 0 6px; font-size: 1rem; }
+.notification-item p { margin: 0; color: var(--text-muted); font-size: 14px; }
+.n-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.n-header .time { color: var(--text-muted); font-size: 12px; margin-left: auto; margin-right: 8px; }
+.empty { color: var(--text-muted); padding: 24px; }

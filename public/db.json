@@ -1,0 +1,377 @@
+{
+  "invoices": [
+    {
+      "id": 1,
+      "invoiceNumber": "INV-2024-001",
+      "fileName": "Sangeetha_Invoice_Jan24.pdf",
+      "uploadedAt": "2024-02-01T10:00:00.000Z",
+      "status": "New"
+    },
+    {
+      "id": 2,
+      "invoiceNumber": "INV-2024-002",
+      "fileName": "Sangeetha_Invoice_Feb24.pdf",
+      "uploadedAt": "2024-02-15T11:30:00.000Z",
+      "status": "New"
+    },
+    {
+      "id": 3,
+      "invoiceNumber": "INV-2024-003",
+      "fileName": "Sangeetha_Invoice_Mar24.pdf",
+      "uploadedAt": "2024-03-01T09:00:00.000Z",
+      "status": "New"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "invoiceId": 1,
+      "brand": "Samsung",
+      "productName": "Galaxy A54",
+      "model": "SM-A546",
+      "imei": "351234567890101",
+      "colour": "Black",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "SAM-A54-BLK-128",
+      "binNumber": null,
+      "outletId": null,
+      "status": "in_stock",
+      "barcode": "8901234567890"
+    },
+    {
+      "id": 2,
+      "invoiceId": 1,
+      "brand": "Samsung",
+      "productName": "Galaxy A54",
+      "model": "SM-A546",
+      "imei": "351234567890102",
+      "colour": "Violet",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "SAM-A54-VIO-256",
+      "binNumber": null,
+      "outletId": null,
+      "status": "in_stock",
+      "barcode": "8901234567891"
+    },
+    {
+      "id": 3,
+      "invoiceId": 1,
+      "brand": "Apple",
+      "productName": "iPhone 14",
+      "model": "A2649",
+      "imei": "359876543210901",
+      "colour": "Blue",
+      "ram": "6 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "APL-IP14-BLU-128",
+      "binNumber": 12,
+      "outletId": 1,
+      "status": "assigned",
+      "barcode": "8901234567892"
+    },
+    {
+      "id": 4,
+      "invoiceId": 1,
+      "brand": "Apple",
+      "productName": "iPhone 14",
+      "model": "A2649",
+      "imei": "359876543210902",
+      "colour": "Midnight",
+      "ram": "6 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "APL-IP14-MID-128",
+      "binNumber": 12,
+      "outletId": 1,
+      "status": "assigned",
+      "barcode": "8901234567893"
+    },
+    {
+      "id": 5,
+      "invoiceId": 2,
+      "brand": "OnePlus",
+      "productName": "Nord 3",
+      "model": "CPH2493",
+      "imei": "861234567890101",
+      "colour": "Misty Green",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "OPL-N3-GRN-128",
+      "binNumber": 8,
+      "outletId": 2,
+      "status": "picked",
+      "barcode": "8901234567894"
+    },
+    {
+      "id": 6,
+      "invoiceId": 2,
+      "brand": "OnePlus",
+      "productName": "Nord 3",
+      "model": "CPH2493",
+      "imei": "861234567890102",
+      "colour": "Tempest Gray",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "OPL-N3-GRY-256",
+      "binNumber": 8,
+      "outletId": 2,
+      "status": "picked",
+      "barcode": "8901234567895"
+    },
+    {
+      "id": 7,
+      "invoiceId": 2,
+      "brand": "Xiaomi",
+      "productName": "Redmi Note 13 Pro",
+      "model": "2311DRK48G",
+      "imei": "861234567890201",
+      "colour": "Aurora Purple",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "XMI-RN13-PUR-256",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "dispatched",
+      "barcode": "8901234567896"
+    },
+    {
+      "id": 8,
+      "invoiceId": 2,
+      "brand": "Xiaomi",
+      "productName": "Redmi Note 13 Pro",
+      "model": "2311DRK48G",
+      "imei": "861234567890202",
+      "colour": "Midnight Black",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "XMI-RN13-BLK-128",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "dispatched",
+      "barcode": "8901234567897"
+    },
+    {
+      "id": 9,
+      "invoiceId": 2,
+      "brand": "Vivo",
+      "productName": "V29 5G",
+      "model": "V2247",
+      "imei": "861234567890301",
+      "colour": "Himalayan Blue",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "VIV-V29-BLU-128",
+      "binNumber": 22,
+      "outletId": 3,
+      "status": "received",
+      "barcode": "8901234567898"
+    },
+    {
+      "id": 10,
+      "invoiceId": 3,
+      "brand": "Oppo",
+      "productName": "Reno 11",
+      "model": "CPH2603",
+      "imei": "861234567890401",
+      "colour": "Rock Grey",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "OPP-R11-GRY-256",
+      "binNumber": 15,
+      "outletId": 2,
+      "status": "received",
+      "barcode": "8901234567899"
+    }
+  ],
+  "outlets": [
+    {
+      "id": 1,
+      "name": "Chennai Central",
+      "code": "OUT-CHE-01",
+      "address": "123 MG Road, Chennai 600034"
+    },
+    {
+      "id": 2,
+      "name": "Bangalore North",
+      "code": "OUT-BLR-01",
+      "address": "456 Brigade Road, Bangalore 560001"
+    },
+    {
+      "id": 3,
+      "name": "Mumbai West",
+      "code": "OUT-MUM-01",
+      "address": "789 Linking Road, Mumbai 400050"
+    }
+  ],
+  "parcels": [
+    {
+      "id": 1,
+      "outletId": 2,
+      "productIds": [5, 6],
+      "driverId": null,
+      "status": "ready_for_dispatch",
+      "ewayBillNumber": "EWB2403010001",
+      "createdAt": "2024-03-01T10:00:00.000Z",
+      "dispatchedAt": null
+    },
+    {
+      "id": 2,
+      "outletId": 1,
+      "productIds": [7, 8],
+      "driverId": 1,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402280001",
+      "createdAt": "2024-02-28T14:00:00.000Z",
+      "dispatchedAt": "2024-02-28T15:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "outletId": 3,
+      "productIds": [9],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402250001",
+      "createdAt": "2024-02-25T09:00:00.000Z",
+      "dispatchedAt": "2024-02-25T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "outletId": 2,
+      "productIds": [10],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402200001",
+      "createdAt": "2024-02-20T11:00:00.000Z",
+      "dispatchedAt": "2024-02-20T12:00:00.000Z"
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Ramesh Kumar",
+      "phone": "9876543210",
+      "vehicleNumber": "TN01AB1234"
+    },
+    {
+      "id": 2,
+      "name": "Suresh Patel",
+      "phone": "9876543211",
+      "vehicleNumber": "KA02CD5678"
+    },
+    {
+      "id": 3,
+      "name": "Priya Sharma",
+      "phone": "9876543212",
+      "vehicleNumber": "MH02EF9012"
+    }
+  ],
+  "deviations": [
+    {
+      "id": 1,
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelId": 2,
+      "timestamp": "2024-02-28T16:45:00.000Z",
+      "description": "Driver deviated from suggested route (Anna Nagar bypass). Took alternate road without system approval.",
+      "read": false
+    },
+    {
+      "id": 2,
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelId": 3,
+      "timestamp": "2024-02-25T11:20:00.000Z",
+      "description": "Route deviation detected: driver stopped at non-designated location for 25 minutes.",
+      "read": true
+    },
+    {
+      "id": 3,
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelId": 2,
+      "timestamp": "2024-02-28T17:00:00.000Z",
+      "description": "Speed limit exceeded on NH48 (recorded 85 km/h in 60 km/h zone).",
+      "read": false
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "type": "deviation",
+      "title": "Route deviation detected",
+      "message": "Ramesh Kumar (Parcel #2) deviated from suggested route at 16:45 on 28 Feb 2024.",
+      "timestamp": "2024-02-28T16:46:00.000Z",
+      "read": false
+    },
+    {
+      "id": 2,
+      "type": "deviation",
+      "title": "Speed alert",
+      "message": "Ramesh Kumar exceeded speed limit on NH48 at 17:00. Parcel #2.",
+      "timestamp": "2024-02-28T17:01:00.000Z",
+      "read": false
+    },
+    {
+      "id": 3,
+      "type": "deviation",
+      "title": "Route deviation – non-designated stop",
+      "message": "Suresh Patel (Parcel #3) stopped at non-designated location for 25 min on 25 Feb 2024.",
+      "timestamp": "2024-02-25T11:21:00.000Z",
+      "read": true
+    },
+    {
+      "id": 4,
+      "type": "info",
+      "title": "Parcel delivered",
+      "message": "Outlet Mumbai West confirmed receipt of Parcel #3. All items scanned and verified.",
+      "timestamp": "2024-02-25T14:30:00.000Z",
+      "read": true
+    }
+  ],
+  "transfers": [
+    {
+      "id": 2,
+      "outletId": 1,
+      "outletName": "Chennai Central",
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelCount": 1,
+      "productCount": 2,
+      "dispatchDate": "2024-02-28",
+      "status": "in_transit"
+    },
+    {
+      "id": 3,
+      "outletId": 3,
+      "outletName": "Mumbai West",
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelCount": 1,
+      "productCount": 1,
+      "dispatchDate": "2024-02-25",
+      "status": "delivered"
+    },
+    {
+      "id": 4,
+      "outletId": 2,
+      "outletName": "Bangalore North",
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelCount": 1,
+      "productCount": 1,
+      "dispatchDate": "2024-02-20",
+      "status": "delivered"
+    }
+  ]
+}

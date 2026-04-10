@@ -1,0 +1,25 @@
+<div class="modal-backdrop" (click)="close()">
+  <div class="modal-box map-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Track driver – Transfer #{{ transferId }}</h2>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="close()">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="map-desc">Real-time driver location (demo: static map). In production, integrate with GPS/live tracking API.</p>
+      <div class="map-container">
+        <iframe
+          title="Driver tracking map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=80.27%2C13.08%2C80.28%2C13.09&layer=mapnik&marker=13.085,80.275"
+          width="100%"
+          height="400"
+          style="border: 1px solid var(--border); border-radius: var(--radius);"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="tracking-info">
+        <span class="badge badge-success">Live</span>
+        <span>Driver on route to store</span>
+      </div>
+    </div>
+  </div>
+</div>

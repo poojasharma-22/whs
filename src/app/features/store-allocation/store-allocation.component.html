@@ -1,0 +1,86 @@
+<div class="page-header">
+  <div>
+    <h1>Store Allocation</h1>
+    <p class="subtitle">Allocate bin-assigned products to stores.</p>
+  </div>
+</div>
+
+<div class="product-selector card">
+  <h3>Select Product</h3>
+  <div class="form-group">
+    <label>Product (only bin-assigned products shown)</label>
+    <select class="form-control" [(ngModel)]="selectedProductKey" (ngModelChange)="onProductSelected()">
+      <option value="">-- Select a product --</option>
+      @for (opt of productOptions; track opt.key) {
+        <option [value]="opt.key">{{ opt.label }} ({{ opt.totalQty }} qty)</option>
+      }
+    </select>
+  </div>
+</div>
+
+@if (selectedProductKey) {
+  <div class="summary-cards">
+    <div class="summary-card">
+      <span class="summary-label">Product</span>
+      <span class="summary-value">{{ selectedGroup?.productName }}</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">RAM / Storage</span>
+      <span class="summary-value">{{ selectedGroup?.ram }} / {{ selectedGroup?.storage }}</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">Bin</span>
+      <span class="summary-value">{{ selectedGroup?.binNumber }}</span>
+    </div>
+    <div class="summary-card">
+      <span class="summary-label">Total Qty in Bin</span>
+      <span class="summary-value">{{ selectedGroup?.totalQty }}</span>
+    </div>
+    <div class="summary-card highlight">
+      <span class="summary-label">Allocated to Stores</span>
+      <span class="summary-value">{{ totalAllocated }}</span>
+    </div>
+    <div class="summary-card" [class.warn]="pendingAllocation > 0">
+      <span class="summary-label">Pending Allocation</span>
+      <span class="summary-value">{{ pendingAllocation }}</span>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 60px;">#</th>
+          <th>Store Name</th>
+          <th>Code</th>
+          <th style="width: 140px;">Allocate Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of storeRows; track row.store.id; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.store.name }}</td>
+            <td><code>{{ row.store.code }}</code></td>
+            <td>
+              <input
+                type="number"
+                class="form-control qty-input"
+                [ngModel]="row.qty"
+                (ngModelChange)="onQtyChange(row.store.id, $event)"
+                min="0"
+                [max]="selectedGroup?.totalQty ?? 0"
+                placeholder="0"
+                [disabled]="pendingAllocation === 0 && row.qty === 0"
+              />
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  <div class="empty-state card">
+    <p>Select a product from the dropdown above to begin allocating quantities to stores.</p>
+  </div>
+}

@@ -1,0 +1,53 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">Sangeetha WHM</div>
+
+    <!-- ✅ RESIZER -->
+    <div class="resizer" (mousedown)="startResize($event)"></div>
+
+    <nav>
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: item.path !== '/intake/invoices' && item.path !== '/masters'
+        }"
+      >
+        <span class="icon">{{ item.icon }}</span>
+        <span>{{ item.label }}</span>
+
+        <span
+          *ngIf="item.path === '/notifications' && notificationCount"
+          class="badge"
+        >
+          {{ notificationCount }}
+        </span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info" *ngIf="currentUser">
+        <span class="user-avatar">👤</span>
+        <div class="user-details">
+          <span class="user-name">{{ currentUser.username }}</span>
+          <span class="user-role">{{ currentUser.role }}</span>
+        </div>
+      </div>
+
+      <button class="logout-btn" (click)="onLogout()">
+        <span>🚪</span> Logout
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <h2 class="page-title">Warehouse Admin Portal</h2>
+    </header>
+
+    <div class="content">
+      <router-outlet />
+    </div>
+  </main>
+</div>

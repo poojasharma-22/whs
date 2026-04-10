@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h1>Driver deviation tracker</h1>
+  <p class="subtitle">When driver does not follow the suggested route, system captures incident with driver name, date and time.</p>
+</div>
+
+<div class="card info-card">
+  <strong>Rule:</strong> If the driver deviates from the system-suggested route, an incident is recorded here (and a notification is sent to admin).
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Driver</th>
+        <th>Parcel</th>
+        <th>Date & time</th>
+        <th>Description</th>
+        <th>Read</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (d of deviations; track d.id) {
+        <tr [class.unread]="!d.read">
+          <td>{{ d.driverName }}</td>
+          <td>#{{ d.parcelId }}</td>
+          <td>{{ d.timestamp | date:'medium' }}</td>
+          <td>{{ d.description }}</td>
+          <td>
+            @if (!d.read) {
+              <button type="button" class="btn btn-sm btn-secondary" (click)="markRead(d)">Mark read</button>
+            } @else {
+              <span class="badge badge-success">Read</span>
+            }
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="5" class="empty">No deviation incidents recorded.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

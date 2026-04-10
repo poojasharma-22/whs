@@ -1,0 +1,71 @@
+<div class="form-card">
+  <h3>Add item</h3>
+  <form (ngSubmit)="submit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Brand</label>
+        <select class="form-control" [(ngModel)]="model.brand" name="brand" required (ngModelChange)="onBrandChange()">
+          <option value="" disabled>Select brand</option>
+          @for (b of brandOptions; track b) {
+            <option [value]="b">{{ b }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Product name</label>
+        <input type="text" class="form-control" [(ngModel)]="model.productName" name="productName" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Model</label>
+        <select class="form-control" [(ngModel)]="model.model" name="model" required>
+          <option value="" disabled>Select model</option>
+          @for (m of currentModelOptions; track m) {
+            <option [value]="m">{{ m }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Colour</label>
+        <select class="form-control" [(ngModel)]="model.colour" name="colour" required>
+          <option value="" disabled>Select colour</option>
+          @for (c of colourOptions; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>RAM</label>
+        <select class="form-control" [(ngModel)]="model.ram" name="ram" required>
+          <option value="" disabled>Select RAM</option>
+          @for (r of ramOptions; track r) {
+            <option [value]="r">{{ r }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Storage</label>
+        <select class="form-control" [(ngModel)]="model.storage" name="storage" required>
+          <option value="" disabled>Select storage</option>
+          @for (s of storageOptions; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Qty</label>
+        <input type="number" class="form-control" [(ngModel)]="model.qty" name="qty" min="1" required />
+      </div>
+      <div class="form-group"></div>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="saving">{{ saving ? 'Saving…' : 'Add item' }}</button>
+    </div>
+  </form>
+</div>

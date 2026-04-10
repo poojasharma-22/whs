@@ -1,0 +1,152 @@
+<!-- <div class="page-header">
+  <h1>Product Intake – Invoices</h1>
+  <div class="actions">
+    <label class="btn btn-primary">
+      <input type="file" accept=".pdf" (change)="onFileSelect($event)" hidden />
+      {{ uploading ? 'Uploading…' : 'Upload Invoice (PDF)' }}
+    </label>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Invoice #</th>
+        <th>Invoice name</th>
+        <th>Uploaded At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (inv of invoices; track inv.id) {
+        <tr>
+          <td>{{ inv.invoiceNumber }}</td>
+          <td>
+            <a [href]="invoiceDownloadUrl(inv)" [attr.download]="inv.fileName" class="download-link">{{ inv.fileName }}</a>
+          </td>
+          <td>{{ inv.uploadedAt | date:'medium' }}</td>
+          <td>
+            <a [routerLink]="['/intake/invoices', inv.id, 'products']" class="btn btn-sm btn-primary">Add line items</a>
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="4" class="empty">No invoices yet. Upload a PDF invoice above.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+<!-- 
+<div class="page-header">
+  <div class="header-left">
+    <a routerLink="/purchase-orders" class="back-link">← Purchase Orders</a>
+    <h1>Product Intake – Invoices</h1>
+  </div>
+  <div class="actions">
+    <label class="btn btn-primary">
+      <input type="file" accept=".pdf" (change)="onFileSelect($event)" hidden />
+      {{ uploading ? 'Uploading…' : 'Upload Invoice (PDF)' }}
+    </label>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Invoice #</th>
+        <th>Invoice name</th>
+        <th>Uploaded At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (inv of invoices; track inv.id) {
+        <tr>
+          <td>{{ inv.invoiceNumber }}</td>
+          <td>
+            <a [href]="invoiceDownloadUrl(inv)" [attr.download]="inv.fileName" class="download-link">{{ inv.fileName }}</a>
+          </td>
+          <td>{{ inv.uploadedAt | date:'medium' }}</td>
+          <td>
+            <a [routerLink]="['/intake/invoices', inv.id, 'products']" class="btn btn-sm btn-primary">Add line items</a>
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="4" class="empty">No invoices yet. Upload a PDF invoice above.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+
+
+
+
+<div class="page-header">
+  <div class="header-left">
+    <a routerLink="/purchase-orders" class="back-link">← Purchase Orders</a>
+    <h1>Product Intake – Invoices</h1>
+  </div>
+  <div class="actions">
+    <label class="btn btn-primary upload-btn" [class.loading]="uploading">
+      <input type="file" accept=".pdf" (change)="onFileSelect($event)" hidden [disabled]="uploading" />
+      <span *ngIf="!uploading">📄 Upload Invoice (PDF)</span>
+      <span *ngIf="uploading" class="spinner-wrap">
+        <span class="spinner"></span> Uploading…
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="toast toast-success" *ngIf="uploadSuccess">
+  ✅ Invoice uploaded successfully!
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Invoice No.</th>
+        <th>Created Date</th>
+        <th>Qty</th>
+        <th>Download</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (inv of invoices; track inv.id) {
+        <tr>
+          <td><strong>{{ inv.invoiceNumber }}</strong></td>
+          <td>{{ inv.uploadedAt | date:'dd MMM yyyy' }}</td>
+          <td>{{ inv.qty }}</td>
+          <td>
+            <a [href]="invoiceDownloadUrl(inv)" [attr.download]="inv.fileName" class="download-link">
+              📄 {{ inv.fileName }}
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['/intake/invoices', inv.id, 'products']" class="btn btn-sm btn-primary">
+              Add line items
+            </a>
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="5" class="empty">No invoices yet. Upload a PDF invoice above.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

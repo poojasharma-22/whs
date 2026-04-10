@@ -1,0 +1,98 @@
+<div class="page-header">
+  <div>
+    <h1>Tracking & Deviations</h1>
+    <p class="subtitle">Track driver transfers and view route deviation incidents.</p>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab" [class.tab-active]="activeTab === 'tracking'" (click)="activeTab = 'tracking'">
+    Tracking ({{ transfers.length }})
+  </button>
+  <button class="tab" [class.tab-active]="activeTab === 'deviations'" (click)="activeTab = 'deviations'">
+    Driver Deviations ({{ deviations.length }})
+  </button>
+</div>
+
+@if (activeTab === 'tracking') {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Store</th>
+          <th>Driver</th>
+          <th>Parcels</th>
+          <th>Products</th>
+          <th>Dispatch date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of transfers; track t.id) {
+          <tr>
+            <td>{{ t.outletName }}</td>
+            <td>{{ t.driverName }}</td>
+            <td>{{ t.parcelCount }}</td>
+            <td>{{ t.productCount }}</td>
+            <td>{{ t.dispatchDate }}</td>
+            <td><span class="badge badge-info">{{ t.status }}</span></td>
+            <td>
+              <button type="button" class="btn btn-sm btn-primary" (click)="openTrack(t.id)">Track driver</button>
+            </td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="7" class="empty">No dispatches to track. Assign drivers in Dispatch module first.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (trackTransferId) {
+    <app-track-driver-modal
+      [transferId]="trackTransferId"
+      (closed)="closeTrack()"
+    />
+  }
+}
+
+@if (activeTab === 'deviations') {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Driver</th>
+          <th>Parcel</th>
+          <th>Date & time</th>
+          <th>Description</th>
+          <th>Read</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (d of deviations; track d.id) {
+          <tr [class.unread]="!d.read">
+            <td>{{ d.driverName }}</td>
+            <td>#{{ d.parcelId }}</td>
+            <td>{{ d.timestamp | date:'medium' }}</td>
+            <td>{{ d.description }}</td>
+            <td>
+              @if (!d.read) {
+                <button type="button" class="btn btn-sm btn-secondary" (click)="markRead(d)">Mark read</button>
+              } @else {
+                <span class="badge badge-success">Read</span>
+              }
+            </td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="5" class="empty">No deviation incidents recorded.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

@@ -1,0 +1,137 @@
+<div class="page-header">
+  <div>
+    <h1>Stock &amp; Bin Assignment</h1>
+    <p class="subtitle">View all products across invoices. Select items to assign a bin.</p>
+    <p class="count-heading">Total: {{ totalCount }} · In stock: {{ inStockCount }} · Assigned: {{ assignedCount }}</p>
+  </div>
+</div>
+
+<div class="filters card">
+  <h3>Filters &amp; search</h3>
+  <div class="filter-row">
+    <div class="form-group">
+      <label>Brand</label>
+      <select class="form-control" [(ngModel)]="filterBrand">
+        <option value="">All brands</option>
+        @for (b of brandOptions; track b) {
+          <option [value]="b">{{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Product</label>
+      <select class="form-control" [(ngModel)]="filterProduct">
+        <option value="">All products</option>
+        @for (p of productNameOptions; track p) {
+          <option [value]="p">{{ p }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Colour</label>
+      <select class="form-control" [(ngModel)]="filterColour">
+        <option value="">All colours</option>
+        @for (c of colourOptions; track c) {
+          <option [value]="c">{{ c }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>RAM</label>
+      <select class="form-control" [(ngModel)]="filterRam">
+        <option value="">All RAM</option>
+        @for (r of ramOptions; track r) {
+          <option [value]="r">{{ r }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Storage</label>
+      <select class="form-control" [(ngModel)]="filterStorage">
+        <option value="">All storage</option>
+        @for (s of storageOptions; track s) {
+          <option [value]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group search-group">
+      <label>Search (product name or IMEI)</label>
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Type to search..." />
+    </div>
+  </div>
+</div>
+
+@if (showAssignBin) {
+  <app-assign-bin-modal
+    [selectedCount]="1"
+    (assigned)="onBinAssigned($event)"
+    (closed)="showAssignBin = false"
+  />
+}
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 44px;"></th>
+        <th>Invoice #</th>
+        <th>Brand</th>
+        <th>Product</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>RAM / Storage</th>
+        <th>Qty</th>
+        <th>HSN / SKU</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of filteredProducts; track p.id) {
+        <tr [class.row-selected]="selectedId === p.id">
+          <td>
+            <input type="radio" name="product-select" [checked]="selectedId === p.id" (change)="selectProduct(p.id)" />
+          </td>
+          <td>{{ invoiceNumber(p.invoiceId) }}</td>
+          <td>{{ p.brand }}</td>
+          <td>{{ p.productName }}</td>
+          <td>{{ p.model }}</td>
+          <td>{{ p.colour }}</td>
+          <td>{{ p.ram }} / {{ p.storage }}</td>
+          <td class="qty-cell">
+            @if (editingQtyId === p.id) {
+              <input
+                type="number"
+                class="form-control qty-input"
+                [ngModel]="editingQtyValue"
+                (ngModelChange)="editingQtyValue = $event"
+                min="1"
+                (blur)="saveQty(p)"
+                (keydown.enter)="saveQty(p); $event.preventDefault()"
+                (keydown.escape)="cancelEditQty()"
+              />
+            } @else {
+              <button type="button" class="qty-edit-btn" (click)="startEditQty(p)" title="Edit quantity">
+                {{ p.qty ?? '–' }}
+              </button>
+            }
+          </td>
+          <td>{{ p.hsnCode }} / {{ p.sku }}</td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="9" class="empty">No products match the filters.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<button
+  type="button"
+  class="fab-btn"
+  [class.fab-disabled]="selectedId === null"
+  [disabled]="selectedId === null"
+  (click)="openAssignBin()"
+>
+  Assign Bin
+</button>

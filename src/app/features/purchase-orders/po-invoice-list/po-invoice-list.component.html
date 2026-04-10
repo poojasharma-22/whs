@@ -1,0 +1,115 @@
+<div class="page-header">
+  <div>
+    <a routerLink="/purchase-orders" class="back-link">← Purchase Orders</a>
+    <h1>Invoices — {{ poNumber }}</h1>
+    <p class="count-heading">
+      {{ invoices.length }} invoice(s) linked to this PO
+    </p>
+  </div>
+  <div class="actions">
+    <!-- Upload new invoice PDF under this PO -->
+    <label class="btn btn-primary">
+      <input type="file" accept=".pdf" (change)="onFileSelect($event)" hidden />
+      {{ uploading ? "Uploading…" : "+ Add Invoice (PDF)" }}
+    </label>
+  </div>
+</div>
+
+<!-- PO info card -->
+<div class="card po-info">
+  <div class="po-info-row">
+    <div class="po-info-item">
+      <span class="po-info-label">PO Number</span>
+      <span class="po-info-value">{{ poNumber }}</span>
+    </div>
+    <div class="po-info-item">
+      <span class="po-info-label">PO PDF</span>
+      <a
+        *ngIf="poPdfName"
+        [href]="'/api/purchase-orders/' + poId + '/file'"
+        [attr.download]="poPdfName"
+        class="download-link"
+      >
+        📄 {{ poPdfName }}
+      </a>
+      <span *ngIf="!poPdfName" class="po-info-value text-muted">—</span>
+    </div>
+    <div class="po-info-item">
+      <span class="po-info-label">Status</span>
+      <span
+        class="badge"
+        [class.badge-warning]="poStatus === 'pending'"
+        [class.badge-success]="poStatus === 'completed'"
+        [class.badge-info]="poStatus === 'in_progress'"
+      >
+        {{ poStatus | titlecase }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Invoices table -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Invoice Number</th>
+        <th>Invoice PDF</th>
+        <th>Uploaded At</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (inv of invoices; track inv.id; let i = $index) {
+      <tr>
+        <td class="text-muted">{{ i + 1 }}</td>
+        <td>
+          <strong>{{ inv.invoiceNumber }}</strong>
+        </td>
+        <td>
+          <a
+            [href]="'/api/po-invoices/' + inv.id + '/file'"
+            [attr.download]="inv.fileName"
+            class="download-link"
+          >
+            📄 {{ inv.fileName }}
+          </a>
+        </td>
+        <td>{{ inv.uploadedAt | date : "medium" }}</td>
+        <td>
+          <span
+            class="badge"
+            [class.badge-warning]="inv.status === 'pending'"
+            [class.badge-success]="inv.status === 'completed'"
+            [class.badge-info]="inv.status === 'in_progress'"
+          >
+            {{ inv.status | titlecase }}
+          </span>
+        </td>
+        <td>
+          <a
+            [routerLink]="[
+              '/purchase-orders',
+              poId,
+              'invoices',
+              inv.id,
+              'products'
+            ]"
+            class="btn btn-sm btn-primary"
+          >
+            Add line items →
+          </a>
+        </td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="6" class="empty">
+          No invoices yet for this PO. Upload an invoice PDF above.
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

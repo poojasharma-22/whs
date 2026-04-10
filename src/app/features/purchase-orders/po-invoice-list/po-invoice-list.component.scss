@@ -1,0 +1,62 @@
+.actions { display: flex; gap: 10px; }
+
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 6px;
+  &:hover { color: var(--text); }
+}
+
+.count-heading {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+// PO info summary card
+.po-info {
+  margin-bottom: 24px;
+}
+
+.po-info-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.po-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.po-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.po-info-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.download-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  &:hover { text-decoration: underline; }
+}
+
+.text-muted { color: var(--text-muted); }
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 32px !important;
+}

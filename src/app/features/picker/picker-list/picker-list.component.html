@@ -1,0 +1,71 @@
+<div class="page-header">
+  <div>
+    <h1>Picker</h1>
+    <p class="subtitle">Products picked from bins for store dispatch.</p>
+    <p class="count-heading">Total: {{ filteredProducts.length }}</p>
+  </div>
+</div>
+
+<div class="filters card">
+  <h3>Filters</h3>
+  <div class="filter-row">
+    <div class="form-group">
+      <label>Bin number</label>
+      <select class="form-control" [(ngModel)]="binFilter">
+        <option [ngValue]="null">All bins</option>
+        @for (b of binOptions; track b) {
+          <option [ngValue]="b">Bin {{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Brand</label>
+      <select class="form-control" [(ngModel)]="brandFilter">
+        <option value="">All brands</option>
+        @for (b of brandOptions; track b) {
+          <option [value]="b">{{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group search-group">
+      <label>Search (product name or IMEI)</label>
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Type to search..." />
+    </div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Product</th>
+        <th>Model</th>
+        <th>IMEI</th>
+        <th>Colour</th>
+        <th>RAM / Storage</th>
+        <th>Bin</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of filteredProducts; track p.id) {
+        <tr>
+          <td>{{ p.brand }}</td>
+          <td>{{ p.productName }}</td>
+          <td>{{ p.model }}</td>
+          <td><code>{{ p.imei }}</code></td>
+          <td>{{ p.colour }}</td>
+          <td>{{ p.ram }} / {{ p.storage }}</td>
+          <td>{{ p.binNumber ?? '–' }}</td>
+          <td><span class="badge badge-success">Picked</span></td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="8" class="empty">No picked products found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

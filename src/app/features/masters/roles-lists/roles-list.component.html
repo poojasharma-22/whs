@@ -1,0 +1,152 @@
+<div class="page-header">
+  <h1>Roles & Permissions</h1>
+  <!-- <p class="subtitle">Role-wise permissions overview.</p> -->
+  <div class="actions">
+    <button type="button" class="btn btn-primary" (click)="openAdd()">
+      Add Role
+    </button>
+  </div>
+</div>
+
+@if (showModal) {
+<div class="modal-backdrop" (click)="closeModal()">
+  <div class="modal-box" (click)="$event.stopPropagation()">
+    <!-- HEADER -->
+    <div class="modal-header">
+      <h2>{{ editingIndex !== null ? "Edit Role" : "Add Role" }}</h2>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="closeModal()"
+      >
+        ×
+      </button>
+    </div>
+
+    <!-- BODY -->
+    <div class="modal-body">
+      <!-- ICON -->
+      <div class="form-group">
+        <label>Icon</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="form.icon"
+          placeholder="e.g. 👑"
+        />
+      </div>
+
+      <!-- ROLE NAME -->
+      <div class="form-group">
+        <label>Role Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="form.name"
+          placeholder="e.g. Manager"
+        />
+      </div>
+
+      <!-- PERMISSIONS -->
+      <div class="form-group">
+        <label>Permissions</label>
+
+        <!-- DROPDOWN HEADER -->
+        <div class="dropdown-box" (click)="toggleDropdown()">
+          <span
+            *ngIf="form.selectedPermissions.length === 0"
+            class="placeholder"
+          >
+            Select permissions
+          </span>
+
+          <span *ngIf="form.selectedPermissions.length > 0">
+            {{ form.selectedPermissions.length }} selected
+          </span>
+
+          <span class="arrow">▼</span>
+        </div>
+
+        <!-- DROPDOWN LIST -->
+        @if (showPermissionDropdown) {
+        <div class="dropdown-list">
+          <label *ngFor="let perm of allPermissions" class="dropdown-item">
+            <input
+              type="checkbox"
+              [value]="perm"
+              (change)="onPermissionToggle($event)"
+              [checked]="form.selectedPermissions.includes(perm)"
+            />
+            {{ perm }}
+          </label>
+        </div>
+        }
+
+        <!-- SELECTED DISPLAY -->
+        <div class="selected-preview" *ngIf="form.selectedPermissions.length">
+          <span *ngFor="let p of form.selectedPermissions" class="chip">
+            {{ p }}
+          </span>
+        </div>
+      </div>
+
+      <!-- CUSTOM PERMISSIONS -->
+      <div class="form-group">
+        <label>Add custom permissions</label>
+        <textarea
+          class="form-control"
+          [(ngModel)]="form.customPermissions"
+          rows="2"
+          placeholder="Custom permissions..."
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+      <button
+        class="btn btn-primary"
+        (click)="save()"
+        [disabled]="!form.name?.trim()"
+      >
+        {{ editingIndex !== null ? "Update" : "Add" }}
+      </button>
+    </div>
+  </div>
+</div>
+}
+
+<!-- TABLE -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Permissions</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (role of roles; track role.name; let i = $index) {
+      <tr>
+        <td class="role-name">
+          <span class="role-icon">{{ role.icon }}</span>
+          {{ role.name }}
+        </td>
+        <td class="perms">{{ role.permissions }}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary" (click)="openEdit(i)">
+            Edit
+          </button>
+        </td>
+      </tr>
+      } @empty {
+      <tr>
+        <td colspan="3">No roles added</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

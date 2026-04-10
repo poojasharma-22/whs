@@ -1,0 +1,1137 @@
+{
+  "purchaseOrders": [
+    {
+      "id": "1",
+      "poNumber": "PO-2025-00001",
+      "vendorName": "Samsung India Electronics Pvt. Ltd.",
+      "fileName": "Samsung_PO_Jan2025.pdf",
+      "uploadedAt": "2025-01-10T09:00:00.000Z",
+      "status": "completed",
+      "invoiceCount": 2
+    },
+    {
+      "id": "2",
+      "poNumber": "PO-2025-00002",
+      "vendorName": "Apple India Pvt. Ltd.",
+      "fileName": "Apple_PO_Feb2025.pdf",
+      "uploadedAt": "2025-02-05T11:00:00.000Z",
+      "status": "in_progress",
+      "invoiceCount": 1
+    },
+    {
+      "id": "3",
+      "poNumber": "PO-2025-00003",
+      "vendorName": "Xiaomi India Pvt. Ltd.",
+      "fileName": "Xiaomi_PO_Mar2025.pdf",
+      "uploadedAt": "2025-03-01T10:30:00.000Z",
+      "status": "pending",
+      "invoiceCount": 0
+    }
+  ],
+  "poInvoices": [
+    {
+      "id": "1",
+      "poId": "1",
+      "invoiceNumber": "INV-SAM-00001",
+      "fileName": "Samsung_Invoice_Jan2025_Part1.pdf",
+      "uploadedAt": "2025-01-12T10:00:00.000Z",
+      "status": "completed"
+    },
+    {
+      "id": "2",
+      "poId": "1",
+      "invoiceNumber": "INV-SAM-00002",
+      "fileName": "Samsung_Invoice_Jan2025_Part2.pdf",
+      "uploadedAt": "2025-01-15T11:30:00.000Z",
+      "status": "in_progress"
+    },
+    {
+      "id": "3",
+      "poId": "2",
+      "invoiceNumber": "INV-APL-00001",
+      "fileName": "Apple_Invoice_Feb2025.pdf",
+      "uploadedAt": "2025-02-08T09:00:00.000Z",
+      "status": "pending"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "1",
+      "invoiceNumber": "INV-ABC-00012",
+      "fileName": "Sangeetha_Invoice_Jan24.pdf",
+      "uploadedAt": "2024-02-01T10:00:00.000Z",
+      "status": "New"
+    },
+    {
+      "id": "2",
+      "invoiceNumber": "INV-ABC-00045",
+      "fileName": "Sangeetha_Invoice_Feb24.pdf",
+      "uploadedAt": "2024-02-15T11:30:00.000Z",
+      "status": "New"
+    },
+    {
+      "id": "3",
+      "invoiceNumber": "INV-ABC-00078",
+      "fileName": "Sangeetha_Invoice_Mar24.pdf",
+      "uploadedAt": "2024-03-01T09:00:00.000Z",
+      "status": "New"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "invoiceId": 1,
+      "brand": "Samsung",
+      "productName": "Galaxy A54",
+      "model": "SM-A546",
+      "imei": "351234567890101",
+      "colour": "Black",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "SAM-A54-BLK-128",
+      "binNumber": 6,
+      "outletId": 3,
+      "status": "received",
+      "barcode": "8901234567890",
+      "qty": 20
+    },
+    {
+      "id": "2",
+      "invoiceId": 1,
+      "brand": "Samsung",
+      "productName": "Galaxy A54",
+      "model": "SM-A546",
+      "imei": "351234567890102",
+      "colour": "Violet",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "SAM-A54-VIO-256",
+      "binNumber": 10,
+      "outletId": 5,
+      "status": "received",
+      "barcode": "8901234567891",
+      "qty": 50
+    },
+    {
+      "id": "3",
+      "invoiceId": 1,
+      "brand": "Apple",
+      "productName": "iPhone 14",
+      "model": "A2649",
+      "imei": "359876543210901",
+      "colour": "Blue",
+      "ram": "6 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "APL-IP14-BLU-128",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "received",
+      "barcode": "8901234567892",
+      "qty": 35
+    },
+    {
+      "id": "4",
+      "invoiceId": 1,
+      "brand": "Apple",
+      "productName": "iPhone 14",
+      "model": "A2649",
+      "imei": "359876543210902",
+      "colour": "Midnight",
+      "ram": "6 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "APL-IP14-MID-128",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "received",
+      "barcode": "8901234567893",
+      "qty": 15
+    },
+    {
+      "id": "5",
+      "invoiceId": 2,
+      "brand": "OnePlus",
+      "productName": "Nord 3",
+      "model": "CPH2493",
+      "imei": "861234567890101",
+      "colour": "Misty Green",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "OPL-N3-GRN-128",
+      "binNumber": 8,
+      "outletId": 2,
+      "status": "received",
+      "barcode": "8901234567894",
+      "qty": 40
+    },
+    {
+      "id": "6",
+      "invoiceId": 2,
+      "brand": "OnePlus",
+      "productName": "Nord 3",
+      "model": "CPH2493",
+      "imei": "861234567890102",
+      "colour": "Tempest Gray",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "OPL-N3-GRY-256",
+      "binNumber": 8,
+      "outletId": 2,
+      "status": "received",
+      "barcode": "8901234567895",
+      "qty": 25
+    },
+    {
+      "id": "7",
+      "invoiceId": 2,
+      "brand": "Xiaomi",
+      "productName": "Redmi Note 13 Pro",
+      "model": "2311DRK48G",
+      "imei": "861234567890201",
+      "colour": "Aurora Purple",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "XMI-RN13-PUR-256",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "received",
+      "barcode": "8901234567896",
+      "qty": 60
+    },
+    {
+      "id": "8",
+      "invoiceId": 2,
+      "brand": "Xiaomi",
+      "productName": "Redmi Note 13 Pro",
+      "model": "2311DRK48G",
+      "imei": "861234567890202",
+      "colour": "Midnight Black",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "XMI-RN13-BLK-128",
+      "binNumber": 5,
+      "outletId": 1,
+      "status": "received",
+      "barcode": "8901234567897",
+      "qty": 30
+    },
+    {
+      "id": "9",
+      "invoiceId": 2,
+      "brand": "Vivo",
+      "productName": "V29 5G",
+      "model": "V2247",
+      "imei": "861234567890301",
+      "colour": "Himalayan Blue",
+      "ram": "8 GB",
+      "storage": "128 GB",
+      "hsnCode": "8517",
+      "sku": "VIV-V29-BLU-128",
+      "binNumber": 12,
+      "outletId": 7,
+      "status": "received",
+      "barcode": "8901234567898",
+      "qty": 45
+    },
+    {
+      "id": "10",
+      "invoiceId": 3,
+      "brand": "Oppo",
+      "productName": "Reno 11",
+      "model": "CPH2603",
+      "imei": "861234567890401",
+      "colour": "Rock Grey",
+      "ram": "8 GB",
+      "storage": "256 GB",
+      "hsnCode": "8517",
+      "sku": "OPP-R11-GRY-256",
+      "binNumber": 12,
+      "outletId": 7,
+      "status": "received",
+      "barcode": "8901234567899",
+      "qty": 10
+    }
+  ],
+  "outlets": [
+    {
+      "id": "1",
+      "name": "Bangalore 1 Store",
+      "code": "STR-BLR-001",
+      "address": "Store #1, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "2",
+      "name": "Bangalore 2 Store",
+      "code": "STR-BLR-002",
+      "address": "Store #2, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "3",
+      "name": "Bangalore 3 Store",
+      "code": "STR-BLR-003",
+      "address": "Store #3, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "4",
+      "name": "Bangalore 4 Store",
+      "code": "STR-BLR-004",
+      "address": "Store #4, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "5",
+      "name": "Bangalore 5 Store",
+      "code": "STR-BLR-005",
+      "address": "Store #5, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "6",
+      "name": "Bangalore 6 Store",
+      "code": "STR-BLR-006",
+      "address": "Store #6, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "7",
+      "name": "Bangalore 7 Store",
+      "code": "STR-BLR-007",
+      "address": "Store #7, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "8",
+      "name": "Bangalore 8 Store",
+      "code": "STR-BLR-008",
+      "address": "Store #8, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "9",
+      "name": "Bangalore 9 Store",
+      "code": "STR-BLR-009",
+      "address": "Store #9, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "10",
+      "name": "Bangalore 10 Store",
+      "code": "STR-BLR-010",
+      "address": "Store #10, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "11",
+      "name": "Bangalore 11 Store",
+      "code": "STR-BLR-011",
+      "address": "Store #11, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "12",
+      "name": "Bangalore 12 Store",
+      "code": "STR-BLR-012",
+      "address": "Store #12, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "13",
+      "name": "Bangalore 13 Store",
+      "code": "STR-BLR-013",
+      "address": "Store #13, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "14",
+      "name": "Bangalore 14 Store",
+      "code": "STR-BLR-014",
+      "address": "Store #14, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "15",
+      "name": "Bangalore 15 Store",
+      "code": "STR-BLR-015",
+      "address": "Store #15, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "16",
+      "name": "Bangalore 16 Store",
+      "code": "STR-BLR-016",
+      "address": "Store #16, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "17",
+      "name": "Bangalore 17 Store",
+      "code": "STR-BLR-017",
+      "address": "Store #17, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "18",
+      "name": "Bangalore 18 Store",
+      "code": "STR-BLR-018",
+      "address": "Store #18, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "19",
+      "name": "Bangalore 19 Store",
+      "code": "STR-BLR-019",
+      "address": "Store #19, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "20",
+      "name": "Bangalore 20 Store",
+      "code": "STR-BLR-020",
+      "address": "Store #20, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "21",
+      "name": "Bangalore 21 Store",
+      "code": "STR-BLR-021",
+      "address": "Store #21, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "22",
+      "name": "Bangalore 22 Store",
+      "code": "STR-BLR-022",
+      "address": "Store #22, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "23",
+      "name": "Bangalore 23 Store",
+      "code": "STR-BLR-023",
+      "address": "Store #23, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "24",
+      "name": "Bangalore 24 Store",
+      "code": "STR-BLR-024",
+      "address": "Store #24, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "25",
+      "name": "Bangalore 25 Store",
+      "code": "STR-BLR-025",
+      "address": "Store #25, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "26",
+      "name": "Bangalore 26 Store",
+      "code": "STR-BLR-026",
+      "address": "Store #26, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "27",
+      "name": "Bangalore 27 Store",
+      "code": "STR-BLR-027",
+      "address": "Store #27, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "28",
+      "name": "Bangalore 28 Store",
+      "code": "STR-BLR-028",
+      "address": "Store #28, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "29",
+      "name": "Bangalore 29 Store",
+      "code": "STR-BLR-029",
+      "address": "Store #29, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "30",
+      "name": "Bangalore 30 Store",
+      "code": "STR-BLR-030",
+      "address": "Store #30, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "31",
+      "name": "Bangalore 31 Store",
+      "code": "STR-BLR-031",
+      "address": "Store #31, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "32",
+      "name": "Bangalore 32 Store",
+      "code": "STR-BLR-032",
+      "address": "Store #32, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "33",
+      "name": "Bangalore 33 Store",
+      "code": "STR-BLR-033",
+      "address": "Store #33, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "34",
+      "name": "Bangalore 34 Store",
+      "code": "STR-BLR-034",
+      "address": "Store #34, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "35",
+      "name": "Bangalore 35 Store",
+      "code": "STR-BLR-035",
+      "address": "Store #35, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "36",
+      "name": "Bangalore 36 Store",
+      "code": "STR-BLR-036",
+      "address": "Store #36, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "37",
+      "name": "Bangalore 37 Store",
+      "code": "STR-BLR-037",
+      "address": "Store #37, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "38",
+      "name": "Bangalore 38 Store",
+      "code": "STR-BLR-038",
+      "address": "Store #38, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "39",
+      "name": "Bangalore 39 Store",
+      "code": "STR-BLR-039",
+      "address": "Store #39, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "40",
+      "name": "Bangalore 40 Store",
+      "code": "STR-BLR-040",
+      "address": "Store #40, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "41",
+      "name": "Bangalore 41 Store",
+      "code": "STR-BLR-041",
+      "address": "Store #41, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "42",
+      "name": "Bangalore 42 Store",
+      "code": "STR-BLR-042",
+      "address": "Store #42, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "43",
+      "name": "Bangalore 43 Store",
+      "code": "STR-BLR-043",
+      "address": "Store #43, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "44",
+      "name": "Bangalore 44 Store",
+      "code": "STR-BLR-044",
+      "address": "Store #44, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "45",
+      "name": "Bangalore 45 Store",
+      "code": "STR-BLR-045",
+      "address": "Store #45, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "46",
+      "name": "Bangalore 46 Store",
+      "code": "STR-BLR-046",
+      "address": "Store #46, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "47",
+      "name": "Bangalore 47 Store",
+      "code": "STR-BLR-047",
+      "address": "Store #47, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "48",
+      "name": "Bangalore 48 Store",
+      "code": "STR-BLR-048",
+      "address": "Store #48, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "49",
+      "name": "Bangalore 49 Store",
+      "code": "STR-BLR-049",
+      "address": "Store #49, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "50",
+      "name": "Bangalore 50 Store",
+      "code": "STR-BLR-050",
+      "address": "Store #50, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "51",
+      "name": "Bangalore 51 Store",
+      "code": "STR-BLR-051",
+      "address": "Store #51, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "52",
+      "name": "Bangalore 52 Store",
+      "code": "STR-BLR-052",
+      "address": "Store #52, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "53",
+      "name": "Bangalore 53 Store",
+      "code": "STR-BLR-053",
+      "address": "Store #53, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "54",
+      "name": "Bangalore 54 Store",
+      "code": "STR-BLR-054",
+      "address": "Store #54, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "55",
+      "name": "Bangalore 55 Store",
+      "code": "STR-BLR-055",
+      "address": "Store #55, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "56",
+      "name": "Bangalore 56 Store",
+      "code": "STR-BLR-056",
+      "address": "Store #56, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "57",
+      "name": "Bangalore 57 Store",
+      "code": "STR-BLR-057",
+      "address": "Store #57, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "58",
+      "name": "Bangalore 58 Store",
+      "code": "STR-BLR-058",
+      "address": "Store #58, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "59",
+      "name": "Bangalore 59 Store",
+      "code": "STR-BLR-059",
+      "address": "Store #59, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "60",
+      "name": "Bangalore 60 Store",
+      "code": "STR-BLR-060",
+      "address": "Store #60, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "61",
+      "name": "Bangalore 61 Store",
+      "code": "STR-BLR-061",
+      "address": "Store #61, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "62",
+      "name": "Bangalore 62 Store",
+      "code": "STR-BLR-062",
+      "address": "Store #62, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "63",
+      "name": "Bangalore 63 Store",
+      "code": "STR-BLR-063",
+      "address": "Store #63, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "64",
+      "name": "Bangalore 64 Store",
+      "code": "STR-BLR-064",
+      "address": "Store #64, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "65",
+      "name": "Bangalore 65 Store",
+      "code": "STR-BLR-065",
+      "address": "Store #65, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "66",
+      "name": "Bangalore 66 Store",
+      "code": "STR-BLR-066",
+      "address": "Store #66, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "67",
+      "name": "Bangalore 67 Store",
+      "code": "STR-BLR-067",
+      "address": "Store #67, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "68",
+      "name": "Bangalore 68 Store",
+      "code": "STR-BLR-068",
+      "address": "Store #68, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "69",
+      "name": "Bangalore 69 Store",
+      "code": "STR-BLR-069",
+      "address": "Store #69, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "70",
+      "name": "Bangalore 70 Store",
+      "code": "STR-BLR-070",
+      "address": "Store #70, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "71",
+      "name": "Bangalore 71 Store",
+      "code": "STR-BLR-071",
+      "address": "Store #71, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "72",
+      "name": "Bangalore 72 Store",
+      "code": "STR-BLR-072",
+      "address": "Store #72, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "73",
+      "name": "Bangalore 73 Store",
+      "code": "STR-BLR-073",
+      "address": "Store #73, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "74",
+      "name": "Bangalore 74 Store",
+      "code": "STR-BLR-074",
+      "address": "Store #74, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "75",
+      "name": "Bangalore 75 Store",
+      "code": "STR-BLR-075",
+      "address": "Store #75, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "76",
+      "name": "Bangalore 76 Store",
+      "code": "STR-BLR-076",
+      "address": "Store #76, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "77",
+      "name": "Bangalore 77 Store",
+      "code": "STR-BLR-077",
+      "address": "Store #77, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "78",
+      "name": "Bangalore 78 Store",
+      "code": "STR-BLR-078",
+      "address": "Store #78, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "79",
+      "name": "Bangalore 79 Store",
+      "code": "STR-BLR-079",
+      "address": "Store #79, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "80",
+      "name": "Bangalore 80 Store",
+      "code": "STR-BLR-080",
+      "address": "Store #80, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "81",
+      "name": "Bangalore 81 Store",
+      "code": "STR-BLR-081",
+      "address": "Store #81, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "82",
+      "name": "Bangalore 82 Store",
+      "code": "STR-BLR-082",
+      "address": "Store #82, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "83",
+      "name": "Bangalore 83 Store",
+      "code": "STR-BLR-083",
+      "address": "Store #83, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "84",
+      "name": "Bangalore 84 Store",
+      "code": "STR-BLR-084",
+      "address": "Store #84, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "85",
+      "name": "Bangalore 85 Store",
+      "code": "STR-BLR-085",
+      "address": "Store #85, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "86",
+      "name": "Bangalore 86 Store",
+      "code": "STR-BLR-086",
+      "address": "Store #86, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "87",
+      "name": "Bangalore 87 Store",
+      "code": "STR-BLR-087",
+      "address": "Store #87, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "88",
+      "name": "Bangalore 88 Store",
+      "code": "STR-BLR-088",
+      "address": "Store #88, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "89",
+      "name": "Bangalore 89 Store",
+      "code": "STR-BLR-089",
+      "address": "Store #89, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "90",
+      "name": "Bangalore 90 Store",
+      "code": "STR-BLR-090",
+      "address": "Store #90, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "91",
+      "name": "Bangalore 91 Store",
+      "code": "STR-BLR-091",
+      "address": "Store #91, MG Road, Bangalore 560002"
+    },
+    {
+      "id": "92",
+      "name": "Bangalore 92 Store",
+      "code": "STR-BLR-092",
+      "address": "Store #92, MG Road, Bangalore 560003"
+    },
+    {
+      "id": "93",
+      "name": "Bangalore 93 Store",
+      "code": "STR-BLR-093",
+      "address": "Store #93, MG Road, Bangalore 560004"
+    },
+    {
+      "id": "94",
+      "name": "Bangalore 94 Store",
+      "code": "STR-BLR-094",
+      "address": "Store #94, MG Road, Bangalore 560005"
+    },
+    {
+      "id": "95",
+      "name": "Bangalore 95 Store",
+      "code": "STR-BLR-095",
+      "address": "Store #95, MG Road, Bangalore 560006"
+    },
+    {
+      "id": "96",
+      "name": "Bangalore 96 Store",
+      "code": "STR-BLR-096",
+      "address": "Store #96, MG Road, Bangalore 560007"
+    },
+    {
+      "id": "97",
+      "name": "Bangalore 97 Store",
+      "code": "STR-BLR-097",
+      "address": "Store #97, MG Road, Bangalore 560008"
+    },
+    {
+      "id": "98",
+      "name": "Bangalore 98 Store",
+      "code": "STR-BLR-098",
+      "address": "Store #98, MG Road, Bangalore 560009"
+    },
+    {
+      "id": "99",
+      "name": "Bangalore 99 Store",
+      "code": "STR-BLR-099",
+      "address": "Store #99, MG Road, Bangalore 560001"
+    },
+    {
+      "id": "100",
+      "name": "Bangalore 100 Store",
+      "code": "STR-BLR-100",
+      "address": "Store #100, MG Road, Bangalore 560002"
+    }
+  ],
+  "parcels": [
+    {
+      "id": "1",
+      "outletId": 2,
+      "productIds": [5, 6],
+      "driverId": 1,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2403010001",
+      "createdAt": "2024-03-01T10:00:00.000Z",
+      "dispatchedAt": "2024-03-02T09:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "outletId": 1,
+      "productIds": [7, 8],
+      "driverId": 1,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402280001",
+      "createdAt": "2024-02-28T14:00:00.000Z",
+      "dispatchedAt": "2024-02-28T15:30:00.000Z"
+    },
+    {
+      "id": "3",
+      "outletId": 3,
+      "productIds": [9],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402250001",
+      "createdAt": "2024-02-25T09:00:00.000Z",
+      "dispatchedAt": "2024-02-25T10:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "outletId": 2,
+      "productIds": [10],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402200001",
+      "createdAt": "2024-02-20T11:00:00.000Z",
+      "dispatchedAt": "2024-02-20T12:00:00.000Z"
+    },
+    {
+      "id": "8dee",
+      "outletId": 2,
+      "productIds": ["5", "6"],
+      "driverId": null,
+      "status": "ready_for_dispatch",
+      "ewayBillNumber": "EWB1773076181387-2",
+      "createdAt": "2026-03-09T17:09:41.387Z",
+      "dispatchedAt": null
+    },
+    {
+      "id": "5",
+      "outletId": 3,
+      "productIds": [1],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2403050001",
+      "createdAt": "2024-03-05T08:00:00.000Z",
+      "dispatchedAt": "2024-03-05T10:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "outletId": 5,
+      "productIds": [2],
+      "driverId": 1,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2403060001",
+      "createdAt": "2024-03-06T09:00:00.000Z",
+      "dispatchedAt": "2024-03-06T11:30:00.000Z"
+    },
+    {
+      "id": "7",
+      "outletId": 1,
+      "productIds": [3, 4],
+      "driverId": 2,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402200001",
+      "createdAt": "2024-02-20T10:00:00.000Z",
+      "dispatchedAt": "2024-02-20T12:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "outletId": 7,
+      "productIds": [9, 10],
+      "driverId": 1,
+      "status": "dispatched",
+      "ewayBillNumber": "EWB2402260001",
+      "createdAt": "2024-02-26T08:30:00.000Z",
+      "dispatchedAt": "2024-02-26T10:45:00.000Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "role": "admin",
+      "active": true
+    },
+    {
+      "id": "2",
+      "username": "picker1",
+      "name": "Raj Picker",
+      "email": "picker1@example.com",
+      "role": "picker",
+      "active": true
+    },
+    {
+      "id": "3",
+      "username": "dispatch1",
+      "name": "Kumar Dispatch",
+      "email": "dispatch1@example.com",
+      "role": "dispatch_manager",
+      "active": true
+    }
+  ],
+  "pickers": [
+    {
+      "id": "1",
+      "username": "picker1",
+      "name": "Raj Picker",
+      "email": "raj.picker@example.com",
+      "phone": "9876500001",
+      "code": "PICK-01"
+    },
+    {
+      "id": "2",
+      "username": "picker2",
+      "name": "Anita Singh",
+      "email": "anita.singh@example.com",
+      "phone": "9876500002",
+      "code": "PICK-02"
+    }
+  ],
+  "dispatchManagers": [
+    {
+      "id": "1",
+      "username": "dispatch1",
+      "name": "Kumar Dispatch",
+      "email": "kumar.dispatch@example.com",
+      "phone": "9876510001",
+      "code": "DM-01"
+    }
+  ],
+  "drivers": [
+    {
+      "id": "1",
+      "username": "driver1",
+      "name": "Ramesh Kumar",
+      "email": "ramesh.driver@example.com",
+      "phone": "9876543210",
+      "vehicleNumber": "TN01AB1234"
+    },
+    {
+      "id": "2",
+      "username": "driver2",
+      "name": "Suresh Patel",
+      "email": "suresh.driver@example.com",
+      "phone": "9876543211",
+      "vehicleNumber": "KA02CD5678"
+    },
+    {
+      "id": "3",
+      "username": "driver3",
+      "name": "Priya Sharma",
+      "email": "priya.driver@example.com",
+      "phone": "9876543212",
+      "vehicleNumber": "MH02EF9012"
+    }
+  ],
+  "deviations": [
+    {
+      "id": "1",
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelId": 2,
+      "timestamp": "2024-02-28T16:45:00.000Z",
+      "description": "Driver deviated from suggested route (Anna Nagar bypass). Took alternate road without system approval.",
+      "read": false
+    },
+    {
+      "id": "2",
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelId": 3,
+      "timestamp": "2024-02-25T11:20:00.000Z",
+      "description": "Route deviation detected: driver stopped at non-designated location for 25 minutes.",
+      "read": true
+    },
+    {
+      "id": "3",
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelId": 2,
+      "timestamp": "2024-02-28T17:00:00.000Z",
+      "description": "Speed limit exceeded on NH48 (recorded 85 km/h in 60 km/h zone).",
+      "read": false
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "type": "deviation",
+      "title": "Route deviation detected",
+      "message": "Ramesh Kumar (Parcel #2) deviated from suggested route at 16:45 on 28 Feb 2024.",
+      "timestamp": "2024-02-28T16:46:00.000Z",
+      "read": false
+    },
+    {
+      "id": "2",
+      "type": "deviation",
+      "title": "Speed alert",
+      "message": "Ramesh Kumar exceeded speed limit on NH48 at 17:00. Parcel #2.",
+      "timestamp": "2024-02-28T17:01:00.000Z",
+      "read": false
+    },
+    {
+      "id": "3",
+      "type": "deviation",
+      "title": "Route deviation – non-designated stop",
+      "message": "Suresh Patel (Parcel #3) stopped at non-designated location for 25 min on 25 Feb 2024.",
+      "timestamp": "2024-02-25T11:21:00.000Z",
+      "read": true
+    },
+    {
+      "id": "4",
+      "type": "info",
+      "title": "Parcel delivered",
+      "message": "Outlet Mumbai West confirmed receipt of Parcel #3. All items scanned and verified.",
+      "timestamp": "2024-02-25T14:30:00.000Z",
+      "read": true
+    }
+  ],
+  "transfers": [
+    {
+      "id": "2",
+      "outletId": 1,
+      "outletName": "Chennai Central",
+      "driverId": 1,
+      "driverName": "Ramesh Kumar",
+      "parcelCount": 1,
+      "productCount": 2,
+      "dispatchDate": "2024-02-28",
+      "status": "in_transit"
+    },
+    {
+      "id": "3",
+      "outletId": 3,
+      "outletName": "Mumbai West",
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelCount": 1,
+      "productCount": 1,
+      "dispatchDate": "2024-02-25",
+      "status": "delivered"
+    },
+    {
+      "id": "4",
+      "outletId": 2,
+      "outletName": "Bangalore North",
+      "driverId": 2,
+      "driverName": "Suresh Patel",
+      "parcelCount": 1,
+      "productCount": 1,
+      "dispatchDate": "2024-02-20",
+      "status": "delivered"
+    }
+  ],
+  "schemas": [
+    "./node_modules/json-server/schema.json"
+  ]
+}

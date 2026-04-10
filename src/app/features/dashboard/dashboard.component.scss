@@ -1,0 +1,12 @@
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.coming-soon h1 {
+  font-size: 2.5rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}

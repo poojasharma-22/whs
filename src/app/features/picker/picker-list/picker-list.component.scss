@@ -1,0 +1,9 @@
+.subtitle { color: var(--text-muted); font-size: 14px; margin: 4px 0 0; }
+.count-heading { color: var(--text-muted); font-size: 14px; margin: 4px 0 0; }
+.filters { margin-bottom: 20px; }
+.filters h3 { margin: 0 0 12px; font-size: 1rem; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+.filter-row .form-group { min-width: 140px; }
+.search-group { min-width: 220px !important; }
+code { font-size: 12px; background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; }
+.empty { color: var(--text-muted); text-align: center; padding: 24px !important; }

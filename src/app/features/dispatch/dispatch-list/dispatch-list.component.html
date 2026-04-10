@@ -1,0 +1,162 @@
+<div class="page-header">
+  <h1>Dispatch</h1>
+  <p class="subtitle">Manage parcels — ready for dispatch and dispatched.</p>
+</div>
+
+<div class="tabs">
+  <button class="tab" [class.tab-active]="activeTab === 'ready'" (click)="activeTab = 'ready'">
+    Ready for Dispatch ({{ readyParcels.length }})
+  </button>
+  <button class="tab" [class.tab-active]="activeTab === 'dispatched'" (click)="activeTab = 'dispatched'">
+    Parcel Dispatched ({{ dispatchedParcels.length }})
+  </button>
+</div>
+
+@if (activeTab === 'ready') {
+  <div class="actions-row">
+    <button type="button" class="btn btn-primary" (click)="createParcelFromPicked()">Create parcel from picked items (demo)</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Parcel ID</th>
+          <th>Product Qty</th>
+          <th>Status</th>
+          <th>eWay Bill</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (parcel of readyParcels; track parcel.id) {
+          <tr>
+            <td>#{{ parcel.id }}</td>
+            <td><a class="qty-link" (click)="openProductDetails(parcel)">{{ parcel.productIds.length }}</a></td>
+            <td><span class="badge badge-info">{{ parcel.status }}</span></td>
+            <td>
+              @if (parcel.ewayBillNumber) {
+                <a class="eway-link" (click)="openEwayBill(parcel)">{{ parcel.ewayBillNumber }}</a>
+              } @else {
+                –
+              }
+            </td>
+            <td>{{ parcel.createdAt | date:'short' }}</td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="5" class="empty">No parcels ready for dispatch.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+
+@if (activeTab === 'dispatched') {
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Parcel ID</th>
+          <th>Product Qty</th>
+          <th>Status</th>
+          <th>eWay Bill</th>
+          <th>Driver</th>
+          <th>Dispatched At</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (parcel of dispatchedParcels; track parcel.id) {
+          <tr>
+            <td>#{{ parcel.id }}</td>
+            <td><a class="qty-link" (click)="openProductDetails(parcel)">{{ parcel.productIds.length }}</a></td>
+            <td><span class="badge badge-success">{{ parcel.status }}</span></td>
+            <td>
+              @if (parcel.ewayBillNumber) {
+                <a class="eway-link" (click)="openEwayBill(parcel)">{{ parcel.ewayBillNumber }}</a>
+              } @else {
+                –
+              }
+            </td>
+            <td>{{ driverName(parcel.driverId) }}</td>
+            <td>{{ parcel.dispatchedAt | date:'short' }}</td>
+          </tr>
+        }
+        @empty {
+          <tr>
+            <td colspan="6" class="empty">No dispatched parcels yet.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+
+@if (showProductDetails) {
+  <div class="modal-backdrop" (click)="showProductDetails = null">
+    <div class="modal-box modal-wide" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Parcel #{{ showProductDetails.id }} – Product details</h2>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="showProductDetails = null">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Brand</th>
+                <th>Product</th>
+                <th>Model</th>
+                <th>IMEI</th>
+                <th>Colour</th>
+                <th>RAM / Storage</th>
+                <th>HSN / SKU</th>
+                <th>Barcode</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (p of parcelProductsList; track p.id) {
+                <tr>
+                  <td>{{ p.brand }}</td>
+                  <td>{{ p.productName }}</td>
+                  <td>{{ p.model }}</td>
+                  <td><code>{{ p.imei }}</code></td>
+                  <td>{{ p.colour }}</td>
+                  <td>{{ p.ram }} / {{ p.storage }}</td>
+                  <td>{{ p.hsnCode }} / {{ p.sku }}</td>
+                  <td><code>{{ p.barcode }}</code></td>
+                  <td>{{ p.status }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (ewayParcel) {
+  <div class="modal-backdrop" (click)="ewayParcel = null">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>eWay Bill Details</h2>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="ewayParcel = null">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-row"><span class="detail-label">eWay Bill Number</span><span class="detail-value">{{ ewayParcel.ewayBillNumber }}</span></div>
+        <div class="detail-row"><span class="detail-label">Parcel ID</span><span class="detail-value">#{{ ewayParcel.id }}</span></div>
+        <div class="detail-row"><span class="detail-label">Store</span><span class="detail-value">{{ outletName(ewayParcel.outletId) }}</span></div>
+        <div class="detail-row"><span class="detail-label">Product Count</span><span class="detail-value">{{ ewayParcel.productIds.length }}</span></div>
+        <div class="detail-row"><span class="detail-label">Driver</span><span class="detail-value">{{ driverName(ewayParcel.driverId) }}</span></div>
+        <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value">{{ ewayParcel.status }}</span></div>
+        <div class="detail-row"><span class="detail-label">Created</span><span class="detail-value">{{ ewayParcel.createdAt | date:'medium' }}</span></div>
+        <div class="detail-row"><span class="detail-label">Dispatched</span><span class="detail-value">{{ ewayParcel.dispatchedAt ? (ewayParcel.dispatchedAt | date:'medium') : '–' }}</span></div>
+      </div>
+    </div>
+  </div>
+}
+

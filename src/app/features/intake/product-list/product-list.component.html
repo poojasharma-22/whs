@@ -1,0 +1,104 @@
+<div class="page-header">
+  <div>
+    <a routerLink="/intake/invoices" class="back-link">← Invoices</a>
+    <h1>Upload products (Invoice #{{ invoiceId }})</h1>
+    <p class="count-heading">Total: {{ products.length }}</p>
+  </div>
+  <div class="actions">
+    <button type="button" class="btn btn-primary" (click)="showAddForm = true">Add line items</button>
+  </div>
+</div>
+
+@if (showAddForm) {
+  <app-add-item-form
+    [invoiceId]="invoiceId"
+    (added)="onItemAdded()"
+  />
+}
+
+<div class="filters card">
+  <h3>Filters &amp; search</h3>
+  <div class="filter-row">
+    <div class="form-group">
+      <label>Brand</label>
+      <select class="form-control" [(ngModel)]="filterBrand">
+        <option value="">All brands</option>
+        @for (b of brandOptions; track b) {
+          <option [value]="b">{{ b }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Product</label>
+      <select class="form-control" [(ngModel)]="filterProduct">
+        <option value="">All products</option>
+        @for (p of productNameOptions; track p) {
+          <option [value]="p">{{ p }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Colour</label>
+      <select class="form-control" [(ngModel)]="filterColour">
+        <option value="">All colours</option>
+        @for (c of colourOptions; track c) {
+          <option [value]="c">{{ c }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Search (product name)</label>
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Type to search..." />
+    </div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Product</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>RAM / Storage</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of filteredProducts; track p.id) {
+        <tr>
+          <td>{{ p.brand }}</td>
+          <td>{{ p.productName }}</td>
+          <td>{{ p.model }}</td>
+          <td>{{ p.colour }}</td>
+          <td>{{ p.ram }} / {{ p.storage }}</td>
+          <td class="qty-cell">
+            @if (editingQtyId === p.id) {
+              <input
+                type="number"
+                class="form-control qty-input"
+                [ngModel]="editingQtyValue"
+                (ngModelChange)="editingQtyValue = $event"
+                min="1"
+                (blur)="saveQty(p)"
+                (keydown.enter)="saveQty(p); $event.preventDefault()"
+                (keydown.escape)="cancelEditQty()"
+              />
+            } @else {
+              <button type="button" class="qty-edit-btn" (click)="startEditQty(p)" title="Edit quantity">
+                {{ p.qty ?? '–' }}
+              </button>
+            }
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="6" class="empty">No products. Add line items to get started.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
