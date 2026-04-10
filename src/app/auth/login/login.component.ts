@@ -23,12 +23,7 @@ export class LoginComponent {
   loading = false;
   error = '';
 
-  constructor(private router: Router) {
-    // Agar pehle se logged in hai toh dashboard pe bhej do
-    if (localStorage.getItem('token')) {
-      this.router.navigate(['/dashboard']);
-    }
-  }
+  constructor(private router: Router) {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -53,8 +48,8 @@ export class LoginComponent {
 
       if (user) {
         // Token save karo — jab backend aaye tab real JWT aayega
-        localStorage.setItem('token', 'mock-token-' + user.role);
-        localStorage.setItem(
+        sessionStorage.setItem('token', 'mock-token-' + user.role);
+        sessionStorage.setItem(
           'user',
           JSON.stringify({ username: user.username, role: user.role })
         );
