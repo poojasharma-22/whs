@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-add-item-form',

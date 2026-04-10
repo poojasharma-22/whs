@@ -16,7 +16,7 @@
 .logo {
   font-weight: 700;
   font-size: 1.1rem;
-  padding: 0 20px 20px;
+  padding: 2.5px 20px 20px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 16px;
   color: var(--text);
@@ -46,7 +46,7 @@
 .sidebar nav a.active {
   background: rgba(59, 130, 246, 0.15);
   color: var(--accent);
-  border-right: 2px solid var(--accent);
+  // border-right: 2px solid var(--accent);
 }
 
 .sidebar nav a .icon {
@@ -62,23 +62,76 @@
   border-radius: 10px;
 }
 
-// ── Sidebar Footer (user info + logout) ──────────────────
-.sidebar-footer {
-  border-top: 1px solid var(--border);
-  padding: 16px;
-  margin-top: auto;
+// ── Masters Toggle Link ───────────────────────────────
+.masters-link {
+  cursor: pointer;
+  user-select: none;
 }
 
-.user-info {
+.arrow {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  display: inline-block;
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+// ── Masters Inline Sub-nav ────────────────────────────
+.masters-subnav {
+  display: flex;
+  flex-direction: column;
+  // background: var(--bg-elevated);
+  border-left: 2px solid var(--accent);
+  // margin: 0 8px 4px 12px;
+  border-radius: 0 6px 6px 0;
+  overflow: hidden;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: rgba(59, 130, 246, 0.08);
+      color: var(--text);
+    }
+
+    &.active {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .icon {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// ── Header Right (user + logout) ─────────────────────
+.header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 4px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .user-avatar {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
 }
 
@@ -106,20 +159,20 @@
 }
 
 .logout-btn {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px;
+  gap: 6px;
+  padding: 8px 14px;
   background: transparent;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 13px;
   font-family: "DM Sans", sans-serif;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
 
   &:hover {
     background: rgba(239, 68, 68, 0.1);
@@ -141,6 +194,8 @@
   padding: 16px 24px;
   border-bottom: 1px solid var(--border);
   background: var(--bg-card);
+  display: flex;
+  align-items: center;
 }
 
 .page-title {
@@ -153,6 +208,8 @@
 .content {
   flex: 1;
   padding: 24px;
+  overflow-y: auto;
+  align-items: flex-start;
 }
 
 /* ── Responsive Layout ───────────────────────────── */

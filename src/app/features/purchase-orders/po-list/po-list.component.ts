@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DatePipe, TitleCasePipe, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
-import { PdfParserService } from '../../../core/parser.service';
+import { PdfParserService } from '../../../core/services/parser.service';
 
 interface MockPO {
   id: number;
@@ -18,7 +18,7 @@ interface MockPO {
 @Component({
   selector: 'app-po-list',
   standalone: true,
-  imports: [DatePipe, TitleCasePipe, NgIf],
+  imports: [DatePipe, NgIf],
   templateUrl: './po-list.component.html',
   styleUrl: './po-list.component.scss'
 })

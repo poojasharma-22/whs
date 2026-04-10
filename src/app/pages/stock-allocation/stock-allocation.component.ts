@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product, Invoice } from '../../models';
-import { AssignBinModalComponent } from '../intake/assign-bin-modal/assign-bin-modal.component';
 import { ApiService } from '../../core/services/api.service';
+import { AssignBinModalComponent } from '../../features/intake/assign-bin-modal/assign-bin-modal.component';
 
 @Component({
   selector: 'app-stock-allocation',

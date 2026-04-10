@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { User, UserRole } from '../../../models';
 
 const ROLES: { value: UserRole; label: string }[] = [

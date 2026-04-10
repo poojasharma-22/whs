@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ApiService } from '../../../core/api.service';
 import { Transfer, Deviation } from '../../../models';
 import { TrackDriverModalComponent } from '../track-driver-modal/track-driver-modal.component';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-tracking-list',

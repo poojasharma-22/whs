@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../core/api.service';
 import { Product, Outlet } from '../../models';
+import { ApiService } from '../../core/services/api.service';
 
 interface ProductGroup {
   key: string;

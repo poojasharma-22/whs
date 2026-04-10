@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { Notification } from '../../../models';
 
 @Component({

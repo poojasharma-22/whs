@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product, Invoice } from '../../../models';
 import { FormsModule } from '@angular/forms';
-import { AddItemFormComponent } from '../add-item-form/add-item-form.component';
 import { ApiService } from '../../../core/services/api.service';
+import { AddItemFormComponent } from '../../../features/intake/add-item-form/add-item-form.component';
 
 @Component({
   selector: 'app-product-list',

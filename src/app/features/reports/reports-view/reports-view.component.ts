@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../core/api.service';
 import { Product, Outlet, Parcel } from '../../../models';
 import { forkJoin } from 'rxjs';
+import { ApiService } from '../../../core/services/api.service';
 
 interface ReportRow {
   product: Product;

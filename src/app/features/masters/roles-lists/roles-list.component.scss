@@ -1,16 +1,10 @@
 :root {
   --role-font-weight: 600;
   --role-width: 160px;
-  --icon-size: 1.1rem;
-  --perm-font-size: 13px;
-  --perm-line-height: 1.6;
   --border-color: #2d3a4f;
-  --text-color: var(--text);
-  --muted-color: var(--text-muted);
   --accent-color: #007bff;
 }
 
-/* FORM GROUPS */
 .form-group {
   margin-bottom: 16px;
 }
@@ -26,6 +20,8 @@
 .form-control {
   font-size: 14px;
   color: #8b9cb3;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ROLE TABLE */
@@ -35,15 +31,16 @@
   width: var(--role-width);
 }
 
-.role-icon {
-  font-size: var(--icon-size);
-  margin-right: 6px;
+.desc {
+  font-size: 13px;
+  color: #8b9cb3;
+  max-width: 220px;
 }
 
 .perms {
-  font-size: var(--perm-font-size);
+  font-size: 13px;
   color: #8b9cb3;
-  line-height: var(--perm-line-height);
+  line-height: 1.6;
 }
 
 /* DROPDOWN HEADER */
@@ -69,6 +66,11 @@
 
 .arrow {
   font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
 }
 
 /* DROPDOWN LIST */
@@ -96,30 +98,52 @@
 
 .dropdown-item:hover {
   background: #405371;
-  color: #8b9cb3;
 }
 
 .dropdown-item input {
   cursor: pointer;
 }
 
+.dropdown-loading,
+.dropdown-empty {
+  padding: 10px;
+  font-size: 13px;
+  color: #8b9cb3;
+  text-align: center;
+}
+
 /* SELECTED CHIPS */
 .selected-preview {
   margin-top: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
 .chip {
-  background: var(--accent-color);
-  color: #8b9cb3;
+  background: transparent;
+  color: #fff;
   padding: 4px 8px;
   border: 1px solid #007bff;
   border-radius: 12px;
   font-size: 12px;
   white-space: nowrap;
+}
+
+/* TABLE */
+.table-loading {
+  padding: 20px;
+  text-align: center;
+  color: #8b9cb3;
+  font-size: 14px;
+}
+
+.empty-row {
+  text-align: center;
+  color: #8b9cb3;
+  font-size: 14px;
+  padding: 20px;
 }
 
 /* SCROLLBAR */
@@ -132,86 +156,27 @@
   border-radius: 4px;
 }
 
-
-/* ================= RESPONSIVE ================= */
-
-/* Tablet */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .role-name {
-    width: 130px; /* thoda compact */
-  }
-
-  .perms {
-    font-size: 12px;
-  }
-
-  .dropdown-list {
-    max-height: 160px;
-  }
+  .role-name { width: 130px; }
+  .perms { font-size: 12px; }
+  .dropdown-list { max-height: 160px; }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-
-  .form-group label {
-    font-size: 13px;
-  }
-
-  .form-control {
-    font-size: 13px;
-  }
-
-  /* ROLE TABLE STACK */
-  .role-name {
-    width: auto;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .perms {
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
-  /* DROPDOWN FULL WIDTH */
-  .dropdown-box {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .dropdown-list {
-    max-height: 140px;
-    padding: 4px;
-  }
-
-  .dropdown-item {
-    font-size: 12px;
-    padding: 6px;
-  }
-
-  /* CHIPS WRAP PROPERLY */
-  .selected-preview {
-    gap: 4px;
-  }
-
-  .chip {
-    font-size: 11px;
-    padding: 3px 6px;
-  }
+  .form-group label { font-size: 13px; }
+  .form-control { font-size: 13px; }
+  .role-name { width: auto; display: block; margin-bottom: 4px; }
+  .desc { max-width: 100%; }
+  .perms { font-size: 12px; line-height: 1.4; }
+  .dropdown-box { width: 100%; padding: 10px; }
+  .dropdown-list { max-height: 140px; padding: 4px; }
+  .dropdown-item { font-size: 12px; padding: 6px; }
+  .chip { font-size: 11px; padding: 3px 6px; }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-
-  .dropdown-box {
-    padding: 8px;
-  }
-
-  .dropdown-item {
-    font-size: 11px;
-  }
-
-  .chip {
-    font-size: 10px;
-  }
+  .dropdown-box { padding: 8px; }
+  .dropdown-item { font-size: 11px; }
+  .chip { font-size: 10px; }
 }

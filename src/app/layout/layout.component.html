@@ -1,49 +1,64 @@
 <div class="layout">
   <aside class="sidebar">
     <div class="logo">Sangeetha WHM</div>
-
-    <!-- ✅ RESIZER -->
     <div class="resizer" (mousedown)="startResize($event)"></div>
 
     <nav>
-      <a
-        *ngFor="let item of navItems"
-        [routerLink]="item.path"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{
-          exact: item.path !== '/intake/invoices' && item.path !== '/masters'
-        }"
-      >
-        <span class="icon">{{ item.icon }}</span>
-        <span>{{ item.label }}</span>
+      <ng-container *ngFor="let item of navItems">
 
-        <span
-          *ngIf="item.path === '/notifications' && notificationCount"
-          class="badge"
-        >
-          {{ notificationCount }}
-        </span>
-      </a>
-    </nav>
+        <!-- Masters link — toggle on click -->
+        <a *ngIf="item.path === '/masters'"
+           (click)="toggleMasters($event)"
+           [class.active]="isMastersActive()"
+           class="masters-link">
+          <span class="icon">{{ item.icon }}</span>
+          <span>{{ item.label }}</span>
+          <span class="arrow" [class.open]="mastersOpen">▾</span>
+        </a>
 
-    <div class="sidebar-footer">
-      <div class="user-info" *ngIf="currentUser">
-        <span class="user-avatar">👤</span>
-        <div class="user-details">
-          <span class="user-name">{{ currentUser.username }}</span>
-          <span class="user-role">{{ currentUser.role }}</span>
+        <!-- Baaki sab normal links -->
+        <a *ngIf="item.path !== '/masters'"
+           [routerLink]="item.path"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: item.path !== '/intake/invoices' }">
+          <span class="icon">{{ item.icon }}</span>
+          <span>{{ item.label }}</span>
+          <span *ngIf="item.path === '/notifications' && notificationCount" class="badge">
+            {{ notificationCount }}
+          </span>
+        </a>
+
+        <!-- Masters sub-nav — sirf tab dikhe jab mastersOpen ho -->
+        <div class="masters-subnav" *ngIf="item.path === '/masters' && mastersOpen">
+          <a
+            *ngFor="let sub of masterNavItems"
+            [routerLink]="sub.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }">
+            <span class="icon">{{ sub.icon }}</span>
+            <span>{{ sub.label }}</span>
+          </a>
         </div>
-      </div>
 
-      <button class="logout-btn" (click)="onLogout()">
-        <span>🚪</span> Logout
-      </button>
-    </div>
+      </ng-container>
+    </nav>
   </aside>
 
   <main class="main">
     <header class="header">
       <h2 class="page-title">Warehouse Admin Portal</h2>
+      <div class="header-right">
+        <div class="header-user" *ngIf="currentUser">
+          <span class="user-avatar">👤</span>
+          <div class="user-details">
+            <span class="user-name">{{ currentUser.username }}</span>
+            <span class="user-role">{{ currentUser.role }}</span>
+          </div>
+        </div>
+        <button class="logout-btn" (click)="onLogout()">
+          <span>🚪</span> Logout
+        </button>
+      </div>
     </header>
 
     <div class="content">

@@ -1,6 +1,5 @@
 <div class="page-header">
   <h1>Roles & Permissions</h1>
-  <!-- <p class="subtitle">Role-wise permissions overview.</p> -->
   <div class="actions">
     <button type="button" class="btn btn-primary" (click)="openAdd()">
       Add Role
@@ -8,98 +7,82 @@
   </div>
 </div>
 
+<!-- MODAL -->
 @if (showModal) {
 <div class="modal-backdrop" (click)="closeModal()">
   <div class="modal-box" (click)="$event.stopPropagation()">
+
     <!-- HEADER -->
     <div class="modal-header">
-      <h2>{{ editingIndex !== null ? "Edit Role" : "Add Role" }}</h2>
-      <button
-        type="button"
-        class="btn btn-secondary btn-sm"
-        (click)="closeModal()"
-      >
-        ×
-      </button>
+      <h2>{{ editingRole !== null ? 'Edit Role' : 'Add Role' }}</h2>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="closeModal()">×</button>
     </div>
 
     <!-- BODY -->
     <div class="modal-body">
-      <!-- ICON -->
+
+      <!-- ROLE (dropdown from /api/roles) -->
       <div class="form-group">
-        <label>Icon</label>
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="form.icon"
-          placeholder="e.g. 👑"
-        />
+        <label>Role</label>
+        <select class="form-control" [(ngModel)]="form.roleId">
+          <option value="" disabled>
+            {{ loadingRoles ? 'Loading roles...' : 'Select role' }}
+          </option>
+          <option *ngFor="let r of allRoles" [value]="r.id">{{ r.name }}</option>
+        </select>
       </div>
 
-      <!-- ROLE NAME -->
+      <!-- DESCRIPTION -->
       <div class="form-group">
-        <label>Role Name</label>
-        <input
-          type="text"
+        <label>Description</label>
+        <textarea
           class="form-control"
-          [(ngModel)]="form.name"
-          placeholder="e.g. Manager"
-        />
+          [(ngModel)]="form.description"
+          rows="2"
+          placeholder="Enter role description..."
+        ></textarea>
       </div>
 
-      <!-- PERMISSIONS -->
+      <!-- PERMISSION MODULES (dropdown from /api/modules) -->
       <div class="form-group">
-        <label>Permissions</label>
+        <label>Permission Modules</label>
 
-        <!-- DROPDOWN HEADER -->
         <div class="dropdown-box" (click)="toggleDropdown()">
-          <span
-            *ngIf="form.selectedPermissions.length === 0"
-            class="placeholder"
-          >
-            Select permissions
+          <span *ngIf="form.selectedModuleIds.length === 0" class="placeholder">
+            {{ loadingModules ? 'Loading modules...' : 'Select permissions' }}
           </span>
-
-          <span *ngIf="form.selectedPermissions.length > 0">
-            {{ form.selectedPermissions.length }} selected
+          <span *ngIf="form.selectedModuleIds.length > 0">
+            {{ form.selectedModuleIds.length }} module(s) selected
           </span>
-
-          <span class="arrow">▼</span>
+          <span class="arrow" [class.open]="showPermissionDropdown">▼</span>
         </div>
 
-        <!-- DROPDOWN LIST -->
         @if (showPermissionDropdown) {
         <div class="dropdown-list">
-          <label *ngFor="let perm of allPermissions" class="dropdown-item">
+          <div *ngIf="loadingModules" class="dropdown-loading">Loading...</div>
+          <label *ngFor="let module of allModules" class="dropdown-item">
             <input
               type="checkbox"
-              [value]="perm"
-              (change)="onPermissionToggle($event)"
-              [checked]="form.selectedPermissions.includes(perm)"
+              [value]="module.id"
+              (change)="onModuleToggle($event)"
+              [checked]="isModuleSelected(module.id)"
             />
-            {{ perm }}
+            {{ module.name }}
           </label>
+          <div *ngIf="!loadingModules && allModules.length === 0" class="dropdown-empty">
+            No modules found
+          </div>
         </div>
         }
 
-        <!-- SELECTED DISPLAY -->
-        <div class="selected-preview" *ngIf="form.selectedPermissions.length">
-          <span *ngFor="let p of form.selectedPermissions" class="chip">
-            {{ p }}
+        <!-- SELECTED CHIPS -->
+        <div class="selected-preview" *ngIf="form.selectedModuleIds.length">
+          <span *ngFor="let id of form.selectedModuleIds" class="chip">
+            {{ getModuleName(id) }}
           </span>
         </div>
       </div>
 
-      <!-- CUSTOM PERMISSIONS -->
-      <div class="form-group">
-        <label>Add custom permissions</label>
-        <textarea
-          class="form-control"
-          [(ngModel)]="form.customPermissions"
-          rows="2"
-          placeholder="Custom permissions..."
-        ></textarea>
-      </div>
     </div>
 
     <!-- FOOTER -->
@@ -108,43 +91,42 @@
       <button
         class="btn btn-primary"
         (click)="save()"
-        [disabled]="!form.name?.trim()"
+        [disabled]="!form.roleId || saving"
       >
-        {{ editingIndex !== null ? "Update" : "Add" }}
+        {{ saving ? 'Saving...' : (editingRole !== null ? 'Update' : 'Add') }}
       </button>
     </div>
+
   </div>
 </div>
 }
 
 <!-- TABLE -->
 <div class="table-wrap">
-  <table>
+  <div *ngIf="loadingTableRoles" class="table-loading">Loading roles...</div>
+
+  <table *ngIf="!loadingTableRoles">
     <thead>
       <tr>
         <th>Role</th>
+        <th>Description</th>
         <th>Permissions</th>
         <th>Actions</th>
       </tr>
     </thead>
-
     <tbody>
-      @for (role of roles; track role.name; let i = $index) {
+      @for (entry of tableEntries; track entry.id) {
       <tr>
-        <td class="role-name">
-          <span class="role-icon">{{ role.icon }}</span>
-          {{ role.name }}
-        </td>
-        <td class="perms">{{ role.permissions }}</td>
+        <td class="role-name">{{ entry.roleName }}</td>
+        <td class="desc">{{ entry.description || '—' }}</td>
+        <td class="perms">{{ getModuleNames(entry.moduleIds) }}</td>
         <td>
-          <button class="btn btn-sm btn-secondary" (click)="openEdit(i)">
-            Edit
-          </button>
+          <button class="btn btn-sm btn-secondary" (click)="openEdit(entry)">Edit</button>
         </td>
       </tr>
       } @empty {
       <tr>
-        <td colspan="3">No roles added</td>
+        <td colspan="4" class="empty-row">No roles added yet</td>
       </tr>
       }
     </tbody>

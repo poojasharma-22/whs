@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { DispatchManager } from '../../../models';
 
 @Component({
@@ -8,7 +8,7 @@ import { DispatchManager } from '../../../models';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './dispatch-manager-list.component.html',
-  styleUrl: './dispatch-manager-list.component.scss'
+  styleUrl: './dispatch-manager-list.component.scss',
 })
 export class DispatchManagerListComponent {
   managers: DispatchManager[] = [];
@@ -26,7 +26,7 @@ export class DispatchManagerListComponent {
   }
 
   load() {
-    this.api.getDispatchManagers().subscribe(list => this.managers = list);
+    this.api.getDispatchManagers().subscribe((list) => (this.managers = list));
   }
 
   openAdd() {
@@ -72,7 +72,9 @@ export class DispatchManagerListComponent {
         this.closeModal();
         this.load();
       },
-      error: () => { this.saving = false; },
+      error: () => {
+        this.saving = false;
+      },
     });
   }
 }

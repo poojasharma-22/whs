@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { Parcel, Driver, Outlet, Product } from '../../../models';
 import { FormsModule } from '@angular/forms';
 

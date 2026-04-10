@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../core/api.service';
+
 import { Driver } from '../../../models';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-driver-list',

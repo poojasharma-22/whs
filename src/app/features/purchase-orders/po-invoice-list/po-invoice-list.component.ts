@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DatePipe, TitleCasePipe, NgIf } from '@angular/common';
-import { ApiService } from '../../../core/api.service';
+import { ApiService } from '../../../core/services/api.service';
 import { POInvoice } from '../../../models';
 
 @Component({
