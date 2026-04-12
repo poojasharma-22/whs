@@ -30,7 +30,7 @@
         [attr.download]="poPdfName"
         class="download-link"
       >
-        📄 {{ poPdfName }}
+        {{ poPdfName }}
       </a>
       <span *ngIf="!poPdfName" class="po-info-value text-muted">—</span>
     </div>
@@ -63,52 +63,52 @@
     </thead>
     <tbody>
       @for (inv of invoices; track inv.id; let i = $index) {
-      <tr>
-        <td class="text-muted">{{ i + 1 }}</td>
-        <td>
-          <strong>{{ inv.invoiceNumber }}</strong>
-        </td>
-        <td>
-          <a
-            [href]="'/api/po-invoices/' + inv.id + '/file'"
-            [attr.download]="inv.fileName"
-            class="download-link"
-          >
-            📄 {{ inv.fileName }}
-          </a>
-        </td>
-        <td>{{ inv.uploadedAt | date : "medium" }}</td>
-        <td>
-          <span
-            class="badge"
-            [class.badge-warning]="inv.status === 'pending'"
-            [class.badge-success]="inv.status === 'completed'"
-            [class.badge-info]="inv.status === 'in_progress'"
-          >
-            {{ inv.status | titlecase }}
-          </span>
-        </td>
-        <td>
-          <a
-            [routerLink]="[
-              '/purchase-orders',
-              poId,
-              'invoices',
-              inv.id,
-              'products'
-            ]"
-            class="btn btn-sm btn-primary"
-          >
-            Add line items →
-          </a>
-        </td>
-      </tr>
+        <tr>
+          <td class="text-muted">{{ i + 1 }}</td>
+          <td>
+            <strong>{{ inv.invoiceNumber }}</strong>
+          </td>
+          <td>
+            <a
+              [href]="'/api/po-invoices/' + inv.id + '/file'"
+              [attr.download]="inv.fileName"
+              class="download-link"
+            >
+              {{ inv.fileName }}
+            </a>
+          </td>
+          <td>{{ inv.uploadedAt | date: "medium" }}</td>
+          <td>
+            <span
+              class="badge"
+              [class.badge-warning]="inv.status === 'pending'"
+              [class.badge-success]="inv.status === 'completed'"
+              [class.badge-info]="inv.status === 'in_progress'"
+            >
+              {{ inv.status | titlecase }}
+            </span>
+          </td>
+          <td>
+            <a
+              [routerLink]="[
+                '/purchase-orders',
+                poId,
+                'invoices',
+                inv.id,
+                'products',
+              ]"
+              class="btn btn-sm btn-primary"
+            >
+              Add line items →
+            </a>
+          </td>
+        </tr>
       } @empty {
-      <tr>
-        <td colspan="6" class="empty">
-          No invoices yet for this PO. Upload an invoice PDF above.
-        </td>
-      </tr>
+        <tr>
+          <td colspan="6" class="empty">
+            No invoices yet for this PO. Upload an invoice PDF above.
+          </td>
+        </tr>
       }
     </tbody>
   </table>

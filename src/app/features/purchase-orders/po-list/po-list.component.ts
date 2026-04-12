@@ -20,7 +20,7 @@ interface MockPO {
   standalone: true,
   imports: [DatePipe, NgIf],
   templateUrl: './po-list.component.html',
-  styleUrl: './po-list.component.scss'
+  styleUrl: './po-list.component.scss',
 })
 export class PoListComponent {
   uploading = false;
@@ -36,7 +36,7 @@ export class PoListComponent {
       qty: 120,
       received: 80,
       invoiceCount: 2,
-      status: 'in_progress'
+      status: 'in_progress',
     },
     {
       id: 2,
@@ -47,11 +47,14 @@ export class PoListComponent {
       qty: 60,
       received: 0,
       invoiceCount: 0,
-      status: 'pending'
-    }
+      status: 'pending',
+    },
   ];
 
-  constructor(private router: Router, private pdfParser: PdfParserService) {}
+  constructor(
+    private router: Router,
+    private pdfParser: PdfParserService,
+  ) {}
 
   async onFileSelect(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -63,26 +66,25 @@ export class PoListComponent {
     input.value = '';
 
     try {
-      // ✅ PdfParserService se parse karo
+      //  PdfParserService se parse karo
       const parsed = await this.pdfParser.parsePO(file);
       console.log('Parsed PO:', parsed); // debug
 
       const newPO: MockPO = {
         id: this.purchaseOrders.length + 1,
-        poNumber:     parsed.poNumber   || this.generatePoNumber(),
-        vendorName:   parsed.vendorName || '—',
-        fileName:     file.name,
-        uploadedAt:   parsed.date       || new Date().toISOString(),
-        qty:          parsed.totalQty,
-        received:     0,
+        poNumber: parsed.poNumber || this.generatePoNumber(),
+        vendorName: parsed.vendorName || '—',
+        fileName: file.name,
+        uploadedAt: parsed.date || new Date().toISOString(),
+        qty: parsed.totalQty,
+        received: 0,
         invoiceCount: 0,
-        status:       'pending'
+        status: 'pending',
       };
 
       this.purchaseOrders = [newPO, ...this.purchaseOrders];
       this.uploadSuccess = true;
-      setTimeout(() => this.uploadSuccess = false, 3000);
-
+      setTimeout(() => (this.uploadSuccess = false), 3000);
     } catch (err) {
       console.error('PDF parse error:', err);
     } finally {

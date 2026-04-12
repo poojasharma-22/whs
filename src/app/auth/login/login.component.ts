@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// ✅ Hardcoded users — jab backend aaye tab sirf loginUser() method replace karna
+//  Hardcoded users — jab backend aaye tab sirf loginUser() method replace karna
 const MOCK_USERS = [
   { username: 'admin', password: 'admin123', role: 'admin' },
   { username: 'manager', password: 'manager123', role: 'manager' },
@@ -38,7 +38,7 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
 
-    // ✅ Fake async delay (real API feel dene ke liye)
+    //  Fake async delay (real API feel dene ke liye)
     // Jab backend aaye: yeh block hata do aur ApiService.login() call karo
     setTimeout(() => {
       const user = MOCK_USERS.find(

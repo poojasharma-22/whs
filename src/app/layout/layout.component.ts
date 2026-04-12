@@ -103,8 +103,6 @@
 
 
 
-
-
 import { Component } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -209,26 +207,26 @@ export class LayoutComponent {
   }
 
   masterNavItems = [
-    { path: '/masters/users', label: 'Users (RBAC)', icon: '👤' },
-    { path: '/masters/drivers', label: 'Drivers', icon: '🚛' },
-    { path: '/masters/pickers', label: 'Pickers', icon: '📋' },
-    { path: '/masters/stores', label: 'Stores', icon: '🏪' },
-    { path: '/masters/dispatch-managers', label: 'Dispatch Managers', icon: '📌' },
-    { path: '/masters/roles-lists', label: 'Roles & Permission', icon: '🔑' },
+    { path: '/masters/users', label: 'Users (RBAC)' },
+    { path: '/masters/drivers', label: 'Drivers' },
+    { path: '/masters/pickers', label: 'Pickers' },
+    { path: '/masters/stores', label: 'Stores' },
+    { path: '/masters/dispatch-managers', label: 'Dispatch Managers' },
+    { path: '/masters/roles-lists', label: 'Roles & Permission' },
   ];
 
   navItems = [
-    { path: '/dashboard', label: 'Dashboard', icon: '📈' },
-    { path: '/purchase-orders', label: 'Purchase Orders', icon: '🧾' },
-    { path: '/intake/invoices', label: 'Product Intake', icon: '📥' },
-    { path: '/stock-allocation', label: 'Stock & Bin Assignment', icon: '📋' },
-    { path: '/store-allocation', label: 'Store Allocation', icon: '🏪' },
-    { path: '/picker', label: 'Picker', icon: '📦' },
-    { path: '/dispatch', label: 'Dispatch', icon: '🚚' },
-    { path: '/tracking', label: 'Tracking & Deviations', icon: '📍' },
-    { path: '/notifications', label: 'Notifications', icon: '🔔' },
-    { path: '/outlet-receiving', label: 'Store Receiving', icon: '✅' },
-    { path: '/reports', label: 'Reports', icon: '📊' },
-    { path: '/masters', label: 'Masters', icon: '⚙️' },
+    { path: '/dashboard', label: 'Dashboard' },
+    { path: '/purchase-orders', label: 'Purchase Orders' },
+    { path: '/intake/invoices', label: 'Product Intake' },
+    { path: '/stock-allocation', label: 'Stock & Bin Assignment' },
+    { path: '/store-allocation', label: 'Store Allocation' },
+    { path: '/picker', label: 'Picker' },
+    { path: '/dispatch', label: 'Dispatch' },
+    { path: '/tracking', label: 'Tracking & Deviations' },
+    { path: '/notifications', label: 'Notifications' },
+    { path: '/outlet-receiving', label: 'Store Receiving' },
+    { path: '/reports', label: 'Reports' },
+    { path: '/masters', label: 'Masters' },
   ];
 }
